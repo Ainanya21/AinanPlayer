@@ -85,8 +85,8 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/CatPawPlayer/releases
 
 To stream 4K original quality resources from cloud aggregators, authenticate your cloud accounts:
 
-1. Open AinanPlayer and navigate to **"Categories"** (全量分类) on the sidebar.
-2. In the source dropdown, select **"Config Center"** (配置中心).
+1. Open AinanPlayer and navigate to **"Home Recommendations"** (首页推荐) on the sidebar.
+2. In the top source dropdown, select **"Config Center"** (配置中心) (or via "Settings" -> "Cloud Storage Authorization").
 3. Use the mobile app of your cloud drive (Quark / UC / Alibaba Cloud / Baidu Netdisk / 115) to scan the QR code.
 4. Once authorized, the backend will automatically handle automated transfer and high-speed direct stream parsing.
 
