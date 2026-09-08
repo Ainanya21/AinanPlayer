@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### Modern Windows 11 Media Aggregation & 4K Hardware-Accelerated Streaming Platform
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/CatPawPlayer)
-[![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/CatPawPlayer)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
+[![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/AinanPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
@@ -72,7 +72,7 @@
 
 ## Download & Installation
 
-Visit the [**Releases Page**](https://github.com/Ainanya21/CatPawPlayer/releases) to download the latest release:
+Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases) to download the latest release:
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |

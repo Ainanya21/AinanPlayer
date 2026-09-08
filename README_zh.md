@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### 现代化 Windows 11 影视聚合与 4K 超清硬件加速播放平台
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/CatPawPlayer)
-[![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/CatPawPlayer)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
+[![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/AinanPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
@@ -72,7 +72,7 @@
 
 ## 下载与安装
 
-进入 [**Releases 发布页面**](https://github.com/Ainanya21/CatPawPlayer/releases) 下载最新安装包：
+进入 [**Releases 发布页面**](https://github.com/Ainanya21/AinanPlayer/releases) 下载最新安装包：
 
 | 文件类型 | 说明 | 适用场景 |
 | :--- | :--- | :--- |
