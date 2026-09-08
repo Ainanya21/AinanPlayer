@@ -6,8 +6,8 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/CatPawPlayer)
 [![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/CatPawPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
-[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/CatPawPlayer)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/CatPawPlayerChat)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
+[![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 🌐 **[English](README.md)** | **[简体中文](README_zh.md)**
@@ -96,8 +96,8 @@
 
 欢迎加入官方社区交流群与频道，获取最新源更新资讯与版本通知：
 
-* **Telegram 官方频道**：[https://t.me/CatPawPlayer](https://t.me/CatPawPlayer)
-* **Telegram 交流群组**：[https://t.me/CatPawPlayerChat](https://t.me/CatPawPlayerChat)
+* **Telegram 官方频道**：[https://t.me/AinanPlayer](https://t.me/AinanPlayer)
+* **Telegram 交流群组**：[https://t.me/AinanPlayerChat](https://t.me/AinanPlayerChat)
 
 ---
 

@@ -6,8 +6,8 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/CatPawPlayer)
 [![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/CatPawPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
-[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/CatPawPlayer)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/CatPawPlayerChat)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
+[![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 🌐 **[English](README.md)** | **[简体中文](README_zh.md)**
@@ -96,8 +96,8 @@ To stream 4K original quality resources from cloud aggregators, authenticate you
 
 Join our official community channels for subscription updates, discussions, and release announcements:
 
-* **Official Telegram Channel**: [https://t.me/CatPawPlayer](https://t.me/CatPawPlayer)
-* **Telegram Discussion Group**: [https://t.me/CatPawPlayerChat](https://t.me/CatPawPlayerChat)
+* **Official Telegram Channel**: [https://t.me/AinanPlayer](https://t.me/AinanPlayer)
+* **Telegram Discussion Group**: [https://t.me/AinanPlayerChat](https://t.me/AinanPlayerChat)
 
 ---
 
