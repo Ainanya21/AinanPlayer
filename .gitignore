@@ -1,5 +1,5 @@
 # ==========================================
-# CatPawPlayer (猫爪播放器) .gitignore
+# AinanPlayer .gitignore
 # ==========================================
 
 # Visual Studio & .NET Build Artifacts
@@ -38,6 +38,7 @@ build_icon.exe
 cat_spider_server.js
 create_packages.js
 spiderHost.js
+CHANGELOG.md
 global.json
 NuGet.Config
 
@@ -86,4 +87,7 @@ $RECYCLE.BIN/
 
 # Local App Runtime Storage
 %LocalAppData%/CatPawPlayer/
+%LocalAppData%/AinanPlayer/
 AppData/
+runtime/
+scratch/

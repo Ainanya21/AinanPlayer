@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> CatPawPlayer (AinanPlayer)
+# <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### Modern Windows 11 Media Aggregation & 4K Hardware-Accelerated Streaming Platform
 
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/CatPawPlayer)
@@ -76,8 +76,8 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/CatPawPlayer/releases
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |
-| **`CatPawPlayer_vX.X.X_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
-| **`CatPawPlayer_vX.X.X_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
+| **`AinanPlayer_vX.X.X_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
+| **`AinanPlayer_vX.X.X_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
 
 ---
 
@@ -85,7 +85,7 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/CatPawPlayer/releases
 
 To stream 4K original quality resources from cloud aggregators, authenticate your cloud accounts:
 
-1. Open CatPawPlayer and navigate to **"Categories"** (全量分类) on the sidebar.
+1. Open AinanPlayer and navigate to **"Categories"** (全量分类) on the sidebar.
 2. In the source dropdown, select **"Config Center"** (配置中心).
 3. Use the mobile app of your cloud drive (Quark / UC / Alibaba Cloud / Baidu Netdisk / 115) to scan the QR code.
 4. Once authorized, the backend will automatically handle automated transfer and high-speed direct stream parsing.
@@ -115,7 +115,7 @@ To configure the external MPV player:
 
 ## Support the Project
 
-If **CatPawPlayer (AinanPlayer)** enhances your multimedia experience, donations to support ongoing development are greatly appreciated:
+If **AinanPlayer** enhances your multimedia experience, donations to support ongoing development are greatly appreciated:
 
 | WeChat Pay (微信赞赏) | Alipay (支付宝收款) |
 | :---: | :---: |
@@ -140,7 +140,7 @@ This project is built upon or inspired by the following outstanding open-source 
 
 ## Disclaimer
 
-1. **Local Tool Nature**: **CatPawPlayer (AinanPlayer)** is strictly a local client and media player built on WinUI 3 and open-source media engines. The software **does not host, store, broadcast, or transmit** any audio, video, subtitle, or image resources.
+1. **Local Tool Nature**: **AinanPlayer** is strictly a local client and media player built on WinUI 3 and open-source media engines. The software **does not host, store, broadcast, or transmit** any audio, video, subtitle, or image resources.
 2. **Third-Party Data Sources**: All subscriptions, site crawlers, cloud accounts, and playback links are **configured or imported by users from third-party public sources**. The developers assume no liability for the validity, legality, accuracy, or availability of third-party sources.
 3. **Lawful Usage**: This project is intended for research, programming education, and multimedia technology exchange. Users must comply with local laws and intellectual property rights. Any unauthorized commercial or copyright-infringing use is strictly prohibited.
 4. **Copyright Notice**: If any copyright holder believes user-imported third-party sources infringe their rights, please contact the respective third-party hosting service or API provider directly.
