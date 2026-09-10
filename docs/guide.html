@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>官方使用指南 - AinanPlayer | WinUI 3 极速播放器</title>
+  <meta name="description" content="AinanPlayer 官方使用指南与使用手册：安装说明、TVBox/猫源订阅源配置、双 MPV 播放引擎配置、网盘扫码授权与常见问题解答。">
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#2d7cf7',
+              600: '#2563eb',
+              700: '#1d4ed8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+    html.dark .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    html.dark .glass-nav {
+      background: rgba(11, 15, 25, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-[#f8fafd] dark:bg-[#0b0f19] text-slate-800 dark:text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- ================= TOP NAVIGATION ================= -->
+  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Logo & Title -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="images/logo.png" alt="AinanPlayer Logo" class="w-9 h-9 transition-transform group-hover:scale-105 duration-300">
+        <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-gray-100 dark:to-gray-400">
+          AinanPlayer
+        </span>
+        <div class="hidden sm:flex items-center gap-1.5">
+          <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-500/30">
+            使用指南
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-gray-300">
+        <a href="index.html" class="hover:text-brand-600 dark:hover:text-white transition-colors">官网首页</a>
+        <a href="index.html#features" class="hover:text-brand-600 dark:hover:text-white transition-colors">特性亮点</a>
+        <a href="index.html#showcase" class="hover:text-brand-600 dark:hover:text-white transition-colors">界面预览</a>
+        <a href="index.html#download" class="hover:text-brand-600 dark:hover:text-white transition-colors">下载中心</a>
+        <a href="guide.html" class="text-brand-600 dark:text-brand-400 font-semibold border-b-2 border-brand-500 pb-0.5">使用指南</a>
+        <a href="index.html#faq" class="hover:text-brand-600 dark:hover:text-white transition-colors">常见问题</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="p-1.5 sm:px-2 sm:py-1 rounded-lg border border-slate-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-slate-100 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-200 transition shadow-sm" title="切换深色/浅色模式">
+          <svg id="themeSun" class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="themeMoon" class="w-4 h-4 block dark:hidden text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+        <!-- Sponsor Button -->
+        <button onclick="openSponsorModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-600 dark:text-pink-300 hover:bg-pink-500/20 transition">
+          <svg class="w-3.5 h-3.5 text-pink-500 dark:text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <span>打赏支持</span>
+        </button>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-white/10 dark:hover:bg-white/15 dark:border dark:border-white/10 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>返回官网</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= GUIDE HERO ================= -->
+  <section class="border-b border-slate-200 dark:border-gray-800/80 bg-white/50 dark:bg-gray-900/30 py-10 sm:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-gray-400 mb-3">
+        <a href="index.html" class="hover:underline">官网首页</a>
+        <span>/</span>
+        <span class="text-brand-600 dark:text-brand-400 font-medium">使用指南</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+        AinanPlayer 官方使用指南与进阶手册
+      </h1>
+      <p class="text-slate-600 dark:text-gray-400 text-base max-w-3xl leading-relaxed">
+        本指南旨在帮助您快速掌握播放器的各项核心功能、TVBox/猫源订阅配置、双 MPV 极速硬件加速、网盘扫码授权与个性化调校，畅享丝滑顺畅的 Windows 4K 影视体验。
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT + TOC SIDEBAR ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+      <!-- LEFT TOC SIDEBAR (Sticky on desktop) -->
+      <aside class="hidden lg:block lg:col-span-3">
+        <div class="sticky top-24 space-y-1 bg-white dark:bg-gray-900/60 p-4 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-sm text-xs">
+          <div class="font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 px-2 flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            目录导航
+          </div>
+          <nav class="space-y-1">
+            <a href="#sec-1" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">1. 软件简介与核心特色</a>
+            <a href="#sec-2" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">2. 下载与安装覆盖说明</a>
+            <a href="#sec-3" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">3. 首次启动与使用声明</a>
+            <a href="#sec-4" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">4. 订阅源管理与添加</a>
+            <a href="#sec-5" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">5. 首页推荐与全量分类</a>
+            <a href="#sec-6" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">6. 影视详情与智能选集</a>
+            <a href="#sec-7" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">7. 双 MPV 播放引擎配置</a>
+            <a href="#sec-8" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">8. 配置中心与网盘授权</a>
+            <a href="#sec-9" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">9. 聚合搜索与历史/收藏</a>
+            <a href="#sec-10" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">10. 外观与图标个性化定制</a>
+            <a href="#sec-11" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">11. 应用内一键在线更新</a>
+            <a href="#sec-12" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">12. 常见问题解答 (FAQ)</a>
+          </nav>
+
+          <div class="pt-3 border-t border-slate-200 dark:border-gray-800 mt-4 px-2">
+            <a href="index.html#download" class="flex items-center justify-center gap-2 py-2 px-3 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-medium transition shadow-md shadow-brand-500/20">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              前往下载客户端
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT MAIN CONTENT (Articles) -->
+      <div class="lg:col-span-9 space-y-12">
+
+        <!-- 1. 软件简介与核心特色 -->
+        <section id="sec-1" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">1</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">软件简介与核心特色</h2>
+          </div>
+          <p class="text-slate-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+            <strong>AinanPlayer</strong> 是一款专为 Windows 10 / 11 平台深度打造的原生 Fluent 2 / WinUI 3 影视聚合流媒体播放器，拒绝套壳网页浏览器的内存黑洞与掉帧卡顿，提供如同系统原生应用般丝滑的交互体验：
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-semibold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-2">
+                <span class="text-brand-500">🎨</span> 原生视觉美学
+              </div>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                深度融合 Windows 11 Mica / Acrylic 材质，支持浅色/深色模式实时无缝切换，更有 4 款专属品牌高质感图标实时热切换。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-semibold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-2">
+                <span class="text-brand-500">🕷️</span> 多引擎万能爬虫
+              </div>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                原生兼容 TVBox、CatVod、王二小放牛娃猫源（9988）、豆源（2333）等全套数据协议，支持海量公开源规则。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-semibold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-2">
+                <span class="text-brand-500">⚡</span> 双轨 Yaozhi-MPV 加速
+              </div>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                内置与外置均全面基于 <strong class="text-brand-600 dark:text-brand-400">Yaozhil/mpv-Yaozhi</strong>。原生支持 4K HDR、HEVC/H.265、杜比视界及 120FPS 超高帧率极速渲染。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-semibold text-slate-900 dark:text-white text-sm mb-1.5 flex items-center gap-2">
+                <span class="text-brand-500">☁️</span> 内嵌网盘扫码控制台
+              </div>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                集成夸克、阿里、百度、115、UC 网盘手机扫码授权中心，直解 4K 原画资源，告别第三方限速卡顿。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. 下载与安装覆盖说明 -->
+        <section id="sec-2" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">2</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">下载与安装覆盖说明</h2>
+          </div>
+          
+          <div class="space-y-4 text-sm text-slate-600 dark:text-gray-300">
+            <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-950/20">
+              <h3 class="font-bold text-emerald-800 dark:text-emerald-400 mb-1 flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                单文件安装版 (AinanPlayer_vX.X.X_Setup.exe) • 强烈推荐
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed mb-2">
+                采用现代化的单文件安装向导，极速解压释放。支持自定义安装盘符，自动配置桌面与开始菜单快捷方式。
+              </p>
+              <div class="text-xs text-emerald-700 dark:text-emerald-300 font-medium">
+                💡 覆盖升级特性：新版本安装包可直接覆盖安装，无损保留所有历史记录、收藏夹与已配置的订阅源。
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl border border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800/40">
+              <h3 class="font-bold text-slate-800 dark:text-gray-200 mb-1 flex items-center gap-2">
+                <span>📦</span> 绿色免安装便携版 (AinanPlayer_vX.X.X_Portable.zip)
+              </h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                解压至任意文件夹或随身 U 盘中，双击直接运行 <code class="px-1.5 py-0.5 bg-slate-200 dark:bg-gray-700 rounded text-xs font-mono">AinanPlayer.exe</code> 即可使用，随拷随走，适合多台设备移动观影。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. 首次启动与使用声明 -->
+        <section id="sec-3" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">3</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">首次启动与使用声明</h2>
+          </div>
+          <div class="text-sm text-slate-600 dark:text-gray-300 space-y-3 leading-relaxed">
+            <p>
+              首次启动或升级启动软件时，应用将自动弹出《AinanPlayer 免责声明与使用条款》。
+            </p>
+            <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-500/30 text-xs text-amber-800 dark:text-amber-300 space-y-2">
+              <div class="font-bold flex items-center gap-1.5 text-sm">
+                <span>⚠️</span> 3 分钟（180秒）合规阅读倒计时说明
+              </div>
+              <p class="leading-relaxed">
+                为确保所有使用者充分知悉本开源播放工具之合规属性与权利边界（本工具仅作为协议渲染壳，不内置任何影视内容），首次启动将开启 180 秒阅读计时。
+              </p>
+              <p class="leading-relaxed">
+                倒计时结束后，点击 <strong>「我已阅读并愿意承担相应责任」</strong> 按钮即可永久进入主界面。后续在「设置」页面中可随时复查完整条款（复查时无需等待倒计时）。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 订阅源管理与添加指南 -->
+        <section id="sec-4" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">4</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">订阅源管理与添加指南</h2>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-gray-300 mb-4 leading-relaxed">
+            AinanPlayer 本身不内置、不提供任何影视媒体资源。添加您自备的订阅规则即可开始畅享：
+          </p>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <span class="w-6 h-6 rounded-full bg-brand-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">进入订阅管理</strong>
+                <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">点击应用顶部居中导航或侧边菜单中的 <strong>「订阅管理」</strong> 图标。</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <span class="w-6 h-6 rounded-full bg-brand-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">点击添加订阅源</strong>
+                <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">点击页面右上角的 <strong>「➕ 添加订阅源」</strong> 按钮，弹出输入对话框。</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <span class="w-6 h-6 rounded-full bg-brand-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">输入订阅 URL 并保存</strong>
+                <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
+                  输入您的 TVBox 或猫源接口地址（支持 <code class="font-mono px-1 bg-slate-200 dark:bg-gray-700 rounded">http://</code>、<code class="font-mono px-1 bg-slate-200 dark:bg-gray-700 rounded">https://</code> 或 Base64 编码源），点击 <strong>「保存并启用」</strong>。
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <span class="w-6 h-6 rounded-full bg-brand-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">自动解析与自由切源</strong>
+                <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
+                  客户端将全自动解析该订阅配置的所有站点并建立本地索引。在站点列表中点击任意条目即可秒级设为当前活跃源。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. 首页推荐换源与全量分类浏览 -->
+        <section id="sec-5" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">5</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">首页推荐换源与全量分类浏览</h2>
+          </div>
+          <div class="space-y-4 text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1">🔄 首页推荐与即时切源</h3>
+              <p class="text-xs text-slate-500 dark:text-gray-400">
+                在「首页推荐」页面顶部，提供 <strong>「当前影视源」下拉切换菜单</strong>。无需进入繁琐设置，直接在此切换活跃源，首页精选轮播与分类内容将无感联动秒刷。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1">📑 全量分类与智能筛选</h3>
+              <p class="text-xs text-slate-500 dark:text-gray-400">
+                进入「全量分类」页面，顶部清晰展示一级分类 Tab（电影、电视剧、动漫、综艺等）。点击「展开筛选」，可按题材、年份、地区多维度组合过滤。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white text-sm mb-1">🛡️ 智能记忆保护</h3>
+              <p class="text-xs text-slate-500 dark:text-gray-400">
+                点击任意影片进入详情后，再点击返回键，系统将 <strong>100% 完整保留</strong> 您之前选中的分类 Tab、筛选器状态以及海报流滚动高度，无需重新滚动寻找。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. 影视详情与智能选集播放 -->
+        <section id="sec-6" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">6</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">影视详情与智能选集播放</h2>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-600 dark:text-gray-300">
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-500 mt-1 font-bold">•</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">多线路播放源</strong>：详情页顶部展示该影片所支持的全部播放源（官源、4K专线、网盘原画线路等），若某线路偶尔卡顿可一键无缝切线。
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-500 mt-1 font-bold">•</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">响应式两端对齐选集</strong>：选集矩阵左右严格对齐，支持极速跳选集数，完整支持包含文件大小与剧集名称的长标签排版。
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-brand-500 mt-1 font-bold">•</span>
+              <div>
+                <strong class="text-slate-900 dark:text-white">实时媒体流探针</strong>：开始点播后，系统自动嗅探并呈现真实的 4K / 1080P、HDR、音频编码与网络延迟徽章。
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 7. 双 MPV 播放引擎配置 -->
+        <section id="sec-7" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">7</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">双播放引擎配置 (MPV 与内外置)</h2>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-6">
+            AinanPlayer 的播放核心全面基于活跃优秀的 <a href="https://github.com/Yaozhil/mpv-Yaozhi" target="_blank" class="text-brand-600 dark:text-brand-400 underline font-semibold">Yaozhil/mpv-Yaozhi</a>，独创提供<strong>内置便携开箱即用</strong>与<strong>外置极客专属定制</strong>双轨模式：
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
+            <div class="p-5 rounded-xl border border-brand-500/30 bg-brand-50/40 dark:bg-brand-950/20">
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-brand-500 text-white uppercase">模式一 • 默认内置</span>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-2.5 mb-1.5">内置便携内核（免配置 · 原生内嵌）</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                软件安装自带调优便携版引擎，直接点播影片即可。原生嵌入在 WinUI 3 窗口中播放，支持 4K UHD、HEVC、HDR、杜比视界，普通用户无需任何设置。
+              </p>
+            </div>
+
+            <div class="p-5 rounded-xl border border-purple-500/30 bg-purple-50/40 dark:bg-purple-950/20">
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-purple-600 text-white uppercase">模式二 • 发烧外置</span>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white mt-2.5 mb-1.5">外置自定义内核（独立窗口 · 发烧友首选）</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                支持加载用户本地定制的 Yaozhi-MPV 环境。完美继承您的 <code class="font-mono bg-slate-200 dark:bg-gray-700 px-1 rounded">mpv.conf</code>、Anime4K / FSRCNNX 着色器、Lua 脚本与快捷键。
+              </p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-100 dark:bg-gray-800/60 text-xs text-slate-600 dark:text-gray-300">
+            <strong class="text-slate-900 dark:text-white">外置 MPV 配置步骤：</strong>
+            前往 <strong>「设置」->「播放内核设置」</strong>，开启「启用外部 MPV 硬件加速播放」开关，点击「浏览...」指定外部 <code class="font-mono bg-white dark:bg-gray-900 px-1.5 py-0.5 rounded border border-slate-300 dark:border-gray-700">mpv.exe</code> 路径，点击「测试启动播放器」验证即可全局生效。
+          </div>
+        </section>
+
+        <!-- 8. 内嵌配置中心与网盘授权 -->
+        <section id="sec-8" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">8</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">内嵌配置中心与网盘授权</h2>
+          </div>
+          <div class="space-y-3 text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+            <p>
+              若您的订阅源中包含网盘类原画高清资源（如夸克、百度、阿里、115、UC 网盘）：
+            </p>
+            <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm">
+              <li>进入 <strong>「设置」->「网盘授权与配置中心」</strong>；</li>
+              <li>点击 <strong>「🖥️ 打开配置中心」</strong>，应用将弹出专属网盘控制台；</li>
+              <li>使用手机端对应网盘 App（例如夸克 App 扫码登录）完成扫码授权；</li>
+              <li>授权成功后状态实时同步，点播 4K 网盘原画视频时客户端将全自动高速拉流，无任何限速。</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- 9. 聚合搜索与历史/收藏管理 -->
+        <section id="sec-9" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">9</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">聚合搜索与历史/收藏管理</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-bold text-slate-900 dark:text-white text-sm mb-1">🔍 聚合全网秒搜</div>
+              <p class="text-slate-500 dark:text-gray-400 leading-relaxed">
+                在搜索框输入关键词，客户端将向所有已配置的源站点发起多线程并发检索，横向按站点分类直观呈现。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-bold text-slate-900 dark:text-white text-sm mb-1">⏱️ 播放进度记忆</div>
+              <p class="text-slate-500 dark:text-gray-400 leading-relaxed">
+                自动精准记录每部影片每集的播放进度与时间戳，重新打开即可一键无缝续播，无需手动快进。
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <div class="font-bold text-slate-900 dark:text-white text-sm mb-1">❤️ 云端与本地收藏</div>
+              <p class="text-slate-500 dark:text-gray-400 leading-relaxed">
+                在详情页轻触红心即可加入收藏夹，建立您的专属影视片单库，换源追剧井井有条。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. 外观与卡片显示个性化设置 -->
+        <section id="sec-10" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">10</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">外观与卡片显示个性化设置</h2>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-gray-300 leading-relaxed mb-4">
+            前往 <strong>「设置」->「外观设置」</strong> 可随心所欲定制您的专属视觉风格：
+          </p>
+
+          <div class="space-y-3 text-xs sm:text-sm">
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <strong class="text-slate-900 dark:text-white">1. 深浅色主题模式</strong>：支持「浅色模式」、「深色模式」或「跟随 Windows 系统」自动无感切换。
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <strong class="text-slate-900 dark:text-white">2. 4 款品牌图标热切换</strong>：
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2 text-xs">
+                <div class="p-2 rounded bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-center font-medium">🔷 经典蔚蓝 (默认)</div>
+                <div class="p-2 rounded bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-center font-medium">🔮 幻彩粉紫</div>
+                <div class="p-2 rounded bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-center font-medium">⬛ 曜石银黑</div>
+                <div class="p-2 rounded bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-700 text-center font-medium">🌌 霓虹暗夜</div>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-gray-400 mt-2">
+                点击卡片即可实时生效，任务栏、原生窗口以及标题栏图标无缝同步更换，无需重启客户端。
+              </p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <strong class="text-slate-900 dark:text-white">3. 卡片布局开关</strong>：支持独立开启或关闭「显示卡片副标题」与「显示右上角角标（4K HDR/更新集数）」，打造极简海报瀑布流。
+            </div>
+          </div>
+        </section>
+
+        <!-- 11. 应用内一键在线更新 -->
+        <section id="sec-11" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">11</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">应用内一键在线更新</h2>
+          </div>
+          <div class="text-sm text-slate-600 dark:text-gray-300 leading-relaxed space-y-2">
+            <p>
+              进入 <strong>「设置」->「关于与软件更新」</strong>，客户端启动或进入该页面时会自动比对 GitHub Releases 最新版本。
+            </p>
+            <p class="text-xs text-slate-500 dark:text-gray-400">
+              当发现新版本时，点击 <strong>「立即下载更新」</strong>，应用将自动通过多镜像高速通道下载安装包并在下载完毕后一键无损覆盖升级，免去手动去浏览器搜索下载的繁琐。
+            </p>
+          </div>
+        </section>
+
+        <!-- 12. 常见问题解答 (FAQ) -->
+        <section id="sec-12" class="scroll-mt-24 p-6 sm:p-8 rounded-2xl glass-card">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold flex items-center justify-center text-sm">12</span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">常见问题解答 (FAQ)</h2>
+          </div>
+
+          <div class="space-y-4 text-sm">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white mb-1.5">Q: 为什么打开全量分类提示“暂无影视订阅源”？</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                答：本播放器为纯粹开放协议渲染客户端，首次使用请前往「订阅管理」页面添加您自备的 TVBox 或猫源规则地址。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white mb-1.5">Q: 播放网盘类 4K 影片时提示需要登录或解析失败？</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                答：请前往「设置」页面点击「打开配置中心」，使用手机客户端扫描对应网盘的二维码完成授权登录即可。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white mb-1.5">Q: 覆盖升级安装后我之前的历史记录和收藏还在吗？</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                答：完全在。覆盖安装时所有用户数据与配置（保存在本地应用数据目录中）均会完整保留，不受版本更新影响。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-gray-800/50 border border-slate-200 dark:border-gray-700/60">
+              <h3 class="font-bold text-slate-900 dark:text-white mb-1.5">Q: 正式版与内测版有什么区别？我该如何选择？</h3>
+              <p class="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
+                答：官方正式稳定版本为 <strong>v3.0.0</strong>，面向所有普通大众用户完全免费开放，经过近千名用户实机测试，日常观影最为稳妥；<strong>v3.8.0 内测版</strong> 包含最新迭代的居中导航栏、界面全页标题精简、4款品牌图标热切换与秒级解压等前沿特性，需要捐赠支持本项目才可下载使用。
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-gray-800 bg-slate-100 dark:bg-[#080b12] py-12 text-xs text-slate-500 dark:text-gray-500 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <img src="images/logo.png" alt="AinanPlayer" class="w-7 h-7">
+          <div>
+            <span class="font-bold text-slate-800 dark:text-gray-300 text-sm">AinanPlayer</span>
+            <span class="text-slate-500 dark:text-gray-500 ml-2">© 2026 Ainan Studio. All rights reserved.</span>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="index.html" class="hover:text-slate-900 dark:hover:text-gray-300 transition">官网首页</a>
+          <a href="index.html#download" class="hover:text-slate-900 dark:hover:text-gray-300 transition">下载中心</a>
+          <a href="https://github.com/Ainanya21/AinanPlayer" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">GitHub 仓库</a>
+          <a href="https://t.me/AinanPlayer" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">Telegram 频道</a>
+          <a href="https://t.me/AinanPlayerChat" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">交流群组</a>
+          <button onclick="openSponsorModal()" class="hover:text-pink-600 dark:hover:text-pink-400 transition">赞助支持</button>
+        </div>
+
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-slate-200/60 dark:border-gray-800/60 text-center text-slate-500 dark:text-gray-600 leading-relaxed">
+        免责声明：本客户端仅作为开源视听协议渲染工具，不提供、不抓取、不存储任何音视频媒体。所有功能需配合用户合法自定义订阅源使用。
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= SPONSOR MODAL ================= -->
+  <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200 text-slate-800 dark:text-white">
+      
+      <button onclick="closeSponsorModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:text-gray-400 dark:hover:text-white transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-full bg-pink-500/10 text-pink-600 dark:text-pink-400 flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold">支持 AinanPlayer 的持续开发</h3>
+        <p class="text-slate-600 dark:text-gray-400 text-xs mt-1">如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <!-- WeChat Pay -->
+        <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
+          <div class="font-semibold text-xs text-emerald-600 dark:text-emerald-400 mb-2 flex items-center justify-center gap-1">
+            <span>微信支付</span>
+          </div>
+          <div class="bg-white p-2 rounded-lg inline-block border border-slate-200 dark:border-gray-700 shadow-sm">
+            <img src="images/sponsor-wx.png" alt="微信赞助二维码" class="w-36 h-36 object-contain rounded">
+          </div>
+        </div>
+
+        <!-- Alipay -->
+        <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
+          <div class="font-semibold text-xs text-blue-600 dark:text-blue-400 mb-2 flex items-center justify-center gap-1">
+            <span>支付宝</span>
+          </div>
+          <div class="bg-white p-2 rounded-lg inline-block border border-slate-200 dark:border-gray-700 shadow-sm">
+            <img src="images/sponsor-ali.png" alt="支付宝赞助二维码" class="w-36 h-36 object-contain rounded">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center">
+        <p class="text-xs text-slate-500 dark:text-gray-400">
+          您的每一份赞赏与支持，都是持续维护优化 AinanPlayer 的无限动力，由衷感谢！💖
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Theme Switcher
+    const htmlEl = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        htmlEl.classList.remove('dark');
+      } else {
+        htmlEl.classList.add('dark');
+      }
+    }
+    initTheme();
+
+    themeBtn.addEventListener('click', () => {
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Sponsor Modal
+    function openSponsorModal() {
+      const modal = document.getElementById('sponsorModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSponsorModal() {
+      const modal = document.getElementById('sponsorModal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    document.getElementById('sponsorModal').addEventListener('click', (e) => {
+      if (e.target.id === 'sponsorModal') {
+        closeSponsorModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSponsorModal();
+      }
+    });
+  </script>
+</body>
+</html>
