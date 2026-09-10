@@ -53,8 +53,8 @@
   * 支持 **王二小放牛娃猫源**（`9988`）、**豆源**（`2333`）、以及统一控制网关（`9980`）。
   * 完美支持 `.js.md5`、Base64 加密订阅、标准 TVBox JSON 仓库以及单 CMS 接口的动态自动识别、热下载与多端口隔离加载。
 * **播放引擎双模式架构（内置开箱即用 + 外置自由定制）**：
-  * **内置便携版 MPV 极速硬件加速**：自带独立内置便携版 MPV 运行内核（`runtime/mpv/mpv.exe`），无需安装任何第三方播放器或复杂配置，安装解压后开箱即享 4K UHD、HEVC/H.265、杜比视界（Dolby Vision）与 60/120FPS 超高刷新率硬件解码。
-  * **外置自定义 MPV 发烧扩展**：支持自定义指定本地外部 `mpv.exe` 路径，完整继承用户专属的 `mpv.conf` 配置、Anime4K / FSRCNNX 等超分辨率着色器与 Lua 插件脚本。
+  * **内置便携版 Yaozhi-MPV 极速硬件加速**：自带独立内置便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 运行内核（`runtime/mpv/mpv.exe`），无需安装任何第三方播放器或复杂配置，安装解压后开箱即享 4K UHD、HEVC/H.265、杜比视界（Dolby Vision）与 60/120FPS 超高刷新率硬件解码。
+  * **外置自定义 Yaozhi-MPV 发烧扩展**：同样基于 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 生态，支持自定义指定本地外部 `mpv.exe` 路径，完整继承用户专属的 `mpv.conf` 配置、Anime4K / FSRCNNX 等超分辨率着色器与 Lua 插件脚本。
   * **内置离线 HLS 原生播放引擎**：内嵌离线 `hls.min.js`，零 CDN 依赖，断网或轻量环境下智能兜底。
 * **内嵌原生配置中心**：
   * 深度集成扫码与授权控制台，无需跳出浏览器，直接在应用内完成夸克、UC、阿里、百度、115 等网盘账号的扫码授权与转存配置。
@@ -69,7 +69,7 @@
 
 * **操作系统**：Windows 10（1809 / 17763 及以上）或 Windows 11（64位）
 * **依赖环境**：安装包已自包含全部运行依赖，解压或安装后即开即用（无需额外安装运行库）
-* **外部播放器（可选）**：如需开启 MPV 极速硬件加速，可搭配 [mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 使用
+* **播放器内核**：内置与外置均基于 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)。软件已自带内置便携内核开箱即用；亦支持自定义指定外部独立 Yaozhi-MPV 路径
 
 ---
 
@@ -79,8 +79,8 @@
 
 | 文件类型 | 说明 | 适用场景 |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v3.7.0_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | 推荐大多数用户使用，支持应用内一键在线检测与自动升级 |
-| **`AinanPlayer_v3.7.0_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
+| **`AinanPlayer_vX.X.X_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | 推荐大多数用户使用，支持应用内一键在线检测与自动升级 |
+| **`AinanPlayer_vX.X.X_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
 
 ---
 
@@ -106,14 +106,14 @@
 
 ## 播放器内核与个性化设置
 
-AinanPlayer 深度支持**内置开箱即用**与**外置自由定制**双模式：
+AinanPlayer 硬件加速引擎全面基于 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**，深度支持**内置开箱即用**与**外置自由定制**双模式：
 
-1. **默认内置播放**：安装或解压后直接点播影片即可，默认调用内置的高性能 MPV 硬件加速引擎（`runtime/mpv/mpv.exe`），无需安装任何第三方播放器。
-2. **自定义外部 MPV**：
+1. **默认内置播放**：安装或解压后直接点播影片即可，默认调用内置的 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 便携版硬件加速引擎（`runtime/mpv/mpv.exe`），零配置即可享受丝滑 4K HDR 画质，无需安装任何第三方播放器。
+2. **自定义外部 Yaozhi-MPV**：
    * 前往左侧导航栏 **「设置」->「播放内核设置」**。
    * 勾选 **「启用外部 MPV 硬件加速播放」**。
-   * 点击 **「浏览...」** 选择您自备或定制的 `mpv.exe` 路径（如 `D:\Yaozhi-MPV\mpv.exe`）。
-   * 点击 **「测试启动播放器」** 验证，随后播放将自动加载您外部的专属着色器滤镜与脚本。
+   * 点击 **「浏览...」** 选择您本地自备或定制的 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) `mpv.exe` 路径（如 `D:\Yaozhi-MPV\mpv.exe`）。
+   * 点击 **「测试启动播放器」** 验证，随后播放将自动加载您外部的专属着色器滤镜、画质脚本与个性化配置。
 3. **自定义应用图标**：
    * 在「设置」->「外观设置」中选择 **经典蔚蓝**、**幻彩粉紫**、**曜石银黑** 或 **霓虹暗夜**，即刻同步更换任务栏与标题栏图标。
 

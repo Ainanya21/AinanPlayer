@@ -53,8 +53,8 @@
   * Native compatibility with CatVod, TVBox protocol ecosystems, encrypted `.js.md5` and Base64 subscriptions.
   * Isolated multi-port microservice hosting, dynamic hot-loading, and intelligent crawler script caching.
 * **Dual Playback Engine Architecture (Built-in + External Customization)**:
-  * **Built-in Portable MPV Engine**: Comes with a self-contained built-in MPV hardware acceleration environment (`runtime/mpv/mpv.exe`) for out-of-the-box 4K UHD, HEVC/H.265, Dolby Vision, and 60/120FPS ultra-high framerate decoding without requiring any external player setup.
-  * **Customizable External MPV Engine**: Specify your own external `mpv.exe` path to leverage your personal `mpv.conf`, custom Shaders (Anime4K, FSRCNNX), custom keybindings, and Lua script extensions.
+  * **Built-in Portable Yaozhi-MPV Engine**: Comes with a self-contained built-in [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) hardware acceleration environment (`runtime/mpv/mpv.exe`) for out-of-the-box 4K UHD, HEVC/H.265, Dolby Vision, and 60/120FPS ultra-high framerate decoding without requiring any external player setup.
+  * **Customizable External Yaozhi-MPV Engine**: Also based on [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi), specify your own external `mpv.exe` path to leverage your personal `mpv.conf`, custom Shaders (Anime4K, FSRCNNX), custom keybindings, and Lua script extensions.
   * **Built-in Offline HLS Player**: Embedded offline `hls.min.js` engine with zero external CDN dependency for lightweight and offline playback.
 * **Integrated Cloud Drive Authorization Console**:
   * Scan-to-login QR code console embedded directly within the application for Quark, UC, Alibaba Cloud, Baidu Netdisk, and 115, enabling automated cloud transfer and 4K streaming.
@@ -69,7 +69,7 @@
 
 * **Operating System**: Windows 10 (Version 1809 / Build 17763 or newer) or Windows 11 (64-bit)
 * **Runtime Dependencies**: Fully self-contained (all required .NET 8 and Windows App SDK runtimes are bundled; no external installation required)
-* **External Player (Optional)**: For extreme hardware-accelerated playback, pair with [mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)
+* **Playback Engine**: Both built-in and external engines are powered by [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi). A portable runtime is bundled out-of-the-box, with optional support for custom external Yaozhi-MPV installations.
 
 ---
 
@@ -79,8 +79,8 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v3.7.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
-| **`AinanPlayer_v3.7.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
+| **`AinanPlayer_vX.X.X_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
+| **`AinanPlayer_vX.X.X_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
 
 ---
 
@@ -106,14 +106,14 @@ Join our official community channels for subscription updates, discussions, and 
 
 ## Playback Engine & Customization
 
-AinanPlayer natively supports both **Built-in Out-of-the-Box** and **Customizable External** playback modes:
+AinanPlayer hardware acceleration is fully powered by **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**, supporting both **Built-in Out-of-the-Box** and **Customizable External** playback modes:
 
-1. **Default Built-in Playback**: Ready to play immediately upon extracting or installing. Uses the bundled high-performance MPV hardware acceleration engine (`runtime/mpv/mpv.exe`) with zero third-party player dependencies.
-2. **Customizable External MPV**:
+1. **Default Built-in Playback**: Ready to play immediately upon extracting or installing. Uses the bundled high-performance [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) hardware acceleration engine (`runtime/mpv/mpv.exe`) with zero third-party dependencies required.
+2. **Customizable External Yaozhi-MPV**:
    * Navigate to **"Settings" -> "Playback Engine Settings"**.
    * Toggle on **"Enable External MPV Hardware Acceleration"**.
-   * Click **"Browse..."** to select your custom `mpv.exe` path (e.g. `D:\Yaozhi-MPV\mpv.exe`).
-   * Click **"Test Launch MPV"** to verify. Playback will then automatically load your custom Shaders, scripts, and keybindings.
+   * Click **"Browse..."** to select your own [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) `mpv.exe` path (e.g. `D:\Yaozhi-MPV\mpv.exe`).
+   * Click **"Test Launch MPV"** to verify. Playback will then automatically load your external shaders, scripts, and keybindings.
 3. **Customizable Application Icons**:
    * Select between **Classic Blue**, **Aurora Pink**, **Obsidian Dark**, or **Neon Cyber** under "Settings" -> "Appearance" to instantly switch the Taskbar and Title Bar icons.
 
