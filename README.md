@@ -46,13 +46,16 @@
 
 ## Key Features
 
-* **Native WinUI 3 & Fluent Design System**: Built with Windows App SDK 1.6 and native Mica / Acrylic materials, supporting seamless real-time switching between Light, Dark, and System theme modes.
+* **Native WinUI 3 & Fluent Design System**:
+  * Built with Windows App SDK 1.6 and native Mica / Acrylic materials, supporting seamless real-time switching between Light, Dark, and System theme modes.
+  * **Brand New App Icon & 4 Customizable Styles**: Features an all-new official default "Classic Blue" icon crafted with continuous superellipse curvature ($n=4.8$) and transparent alpha channels. Choose between **Classic Blue**, **Aurora Pink**, **Obsidian Dark**, and **Neon Cyber** in Settings with instant live switching across Windows Taskbar and Title Bar.
 * **Universal Multi-Engine Spider Architecture**:
   * Native compatibility with CatVod, TVBox protocol ecosystems, encrypted `.js.md5` and Base64 subscriptions.
   * Isolated multi-port microservice hosting, dynamic hot-loading, and intelligent crawler script caching.
-* **Dual Playback Engines & 4K HDR Hardware Acceleration**:
-  * **Yaozhi-MPV Extreme Playback**: Direct integration with external MPV player for 4K UHD, HEVC/H.265, Dolby Vision, and 120FPS ultra-high framerate hardware decoding.
-  * **Built-in Offline HLS Player**: Embedded offline `hls.min.js` engine with zero external CDN dependency for instant and reliable offline playback.
+* **Dual Playback Engine Architecture (Built-in + External Customization)**:
+  * **Built-in Portable MPV Engine**: Comes with a self-contained built-in MPV hardware acceleration environment (`runtime/mpv/mpv.exe`) for out-of-the-box 4K UHD, HEVC/H.265, Dolby Vision, and 60/120FPS ultra-high framerate decoding without requiring any external player setup.
+  * **Customizable External MPV Engine**: Specify your own external `mpv.exe` path to leverage your personal `mpv.conf`, custom Shaders (Anime4K, FSRCNNX), custom keybindings, and Lua script extensions.
+  * **Built-in Offline HLS Player**: Embedded offline `hls.min.js` engine with zero external CDN dependency for lightweight and offline playback.
 * **Integrated Cloud Drive Authorization Console**:
   * Scan-to-login QR code console embedded directly within the application for Quark, UC, Alibaba Cloud, Baidu Netdisk, and 115, enabling automated cloud transfer and 4K streaming.
 * **Kernel-Level Real-Time Playback Telemetry**:
@@ -76,8 +79,8 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |
-| **`AinanPlayer_vX.X.X_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
-| **`AinanPlayer_vX.X.X_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
+| **`AinanPlayer_v3.7.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | Recommended for most users; supports in-app updates |
+| **`AinanPlayer_v3.7.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
 
 ---
 
@@ -101,15 +104,18 @@ Join our official community channels for subscription updates, discussions, and 
 
 ---
 
-## Player Settings (MPV Hardware Acceleration)
+## Playback Engine & Customization
 
-To configure the external MPV player:
+AinanPlayer natively supports both **Built-in Out-of-the-Box** and **Customizable External** playback modes:
 
-1. Go to **"Settings"** on the left navigation bar.
-2. In the **"Player Settings"** section:
-   * Toggle on **"Enable Yaozhi-MPV Hardware Acceleration"**.
-   * Click **"Browse..."** to select your `mpv.exe` executable path (e.g. `D:\Yaozhi-MPV\mpv.exe`).
-3. Video playback will now launch with full MPV hardware decoding, breakpoint memory, and keyboard shortcuts.
+1. **Default Built-in Playback**: Ready to play immediately upon extracting or installing. Uses the bundled high-performance MPV hardware acceleration engine (`runtime/mpv/mpv.exe`) with zero third-party player dependencies.
+2. **Customizable External MPV**:
+   * Navigate to **"Settings" -> "Playback Engine Settings"**.
+   * Toggle on **"Enable External MPV Hardware Acceleration"**.
+   * Click **"Browse..."** to select your custom `mpv.exe` path (e.g. `D:\Yaozhi-MPV\mpv.exe`).
+   * Click **"Test Launch MPV"** to verify. Playback will then automatically load your custom Shaders, scripts, and keybindings.
+3. **Customizable Application Icons**:
+   * Select between **Classic Blue**, **Aurora Pink**, **Obsidian Dark**, or **Neon Cyber** under "Settings" -> "Appearance" to instantly switch the Taskbar and Title Bar icons.
 
 ---
 
