@@ -8,11 +8,12 @@
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
+[![Official Website](https://img.shields.io/badge/Official%20Site-ainanya21.github.io%2FAinanPlayer-2D7CF7?style=flat-square&logo=googlechrome&logoColor=white)](https://ainanya21.github.io/AinanPlayer/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 🌐 **[English](README.md)** | **[简体中文](README_zh.md)**
 
-[**Download**](#download--installation) • [**User Guide**](docs/USER_GUIDE.md) • [**Screenshots**](#interface-preview) • [**Features**](#key-features) • [**Requirements**](#system-requirements) • [**Cloud Authorization**](#cloud-drive-authorization) • [**Community**](#community--feedback) • [**Disclaimer**](#disclaimer) • [**Support**](#support-the-project) • [**Credits**](#credits--acknowledgments)
+🌍 [**Official Website**](https://ainanya21.github.io/AinanPlayer/) • [**Download**](#download--installation) • [**User Guide**](docs/USER_GUIDE.md) • [**Screenshots**](#interface-preview) • [**Features**](#key-features) • [**Requirements**](#system-requirements) • [**Cloud Authorization**](#cloud-drive-authorization) • [**Community**](#community--feedback) • [**Disclaimer**](#disclaimer) • [**Support**](#support-the-project) • [**Credits**](#credits--acknowledgments)
 
 </div>
 

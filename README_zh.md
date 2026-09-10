@@ -8,11 +8,12 @@
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
 [![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayer)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Group-2CA5E0?style=flat-square&logo=telegram)](https://t.me/AinanPlayerChat)
+[![Official Website](https://img.shields.io/badge/官网主页-ainanya21.github.io%2FAinanPlayer-2D7CF7?style=flat-square&logo=googlechrome&logoColor=white)](https://ainanya21.github.io/AinanPlayer/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
 🌐 **[English](README.md)** | **[简体中文](README_zh.md)**
 
-[**下载体验**](#下载与安装) • [**使用指南**](docs/USER_GUIDE.md) • [**界面预览**](#界面预览) • [**核心亮点**](#核心亮点) • [**环境要求**](#运行环境要求) • [**配置中心**](#配置中心与网盘授权) • [**社区交流**](#交流与社区反馈) • [**免责声明**](#免责声明) • [**支持项目**](#支持项目) • [**来源与许可**](#来源与许可)
+🌍 [**官方网站**](https://ainanya21.github.io/AinanPlayer/) • [**下载体验**](#下载与安装) • [**使用指南**](docs/USER_GUIDE.md) • [**界面预览**](#界面预览) • [**核心亮点**](#核心亮点) • [**环境要求**](#运行环境要求) • [**配置中心**](#配置中心与网盘授权) • [**社区交流**](#交流与社区反馈) • [**免责声明**](#免责声明) • [**支持项目**](#支持项目) • [**来源与许可**](#来源与许可)
 
 </div>
 
