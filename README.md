@@ -54,8 +54,7 @@
   * Isolated multi-port microservice hosting, dynamic hot-loading, and intelligent crawler script caching.
 * **Dual Playback Engine Architecture (Built-in + External Customization)**:
   * **Built-in Portable Yaozhi-MPV Engine**: Comes with a self-contained built-in [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) hardware acceleration environment (`runtime/mpv/mpv.exe`) for out-of-the-box 4K UHD, HEVC/H.265, Dolby Vision, and 60/120FPS ultra-high framerate decoding without requiring any external player setup.
-  * **Customizable External Yaozhi-MPV Engine**: Also based on [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi), specify your own external `mpv.exe` path to leverage your personal `mpv.conf`, custom Shaders (Anime4K, FSRCNNX), custom keybindings, and Lua script extensions.
-  * **Built-in Offline HLS Player**: Embedded offline `hls.min.js` engine with zero external CDN dependency for lightweight and offline playback.
+  * **Customizable External Yaozhi-MPV Engine**: Also based on [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi), specify your own external `mpv.exe` path to leverage your personal `mpv.conf`, custom Shaders (Anime4K, FSRCNNX), custom keybindings, and Lua script extensions. Globally managed under Settings.
 * **Integrated Cloud Drive Authorization Console**:
   * Scan-to-login QR code console embedded directly within the application for Quark, UC, Alibaba Cloud, Baidu Netdisk, and 115, enabling automated cloud transfer and 4K streaming.
 * **Kernel-Level Real-Time Playback Telemetry**:
@@ -138,7 +137,6 @@ This project is built upon or inspired by the following outstanding open-source 
 * **[mpv](https://mpv.io/) / [mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**: High-performance cross-platform video renderer and hardware decoding core.
 * **[WinUI 3](https://github.com/microsoft/WindowsAppSDK) / [Windows App SDK](https://learn.microsoft.com/windows/apps/windows-app-sdk/)**: Microsoft's modern native Windows Fluent Design UI framework.
 * **[CatVodSpider / TVBox Protocol Ecosystem](https://github.com/)**: Open multi-source video scraping specifications and crawler protocols.
-* **[hls.js](https://github.com/video-dev/hls.js/)**: Native JavaScript HLS client and m3u8 streaming parser.
 * **[Fastify](https://fastify.dev/) / [Node.js](https://nodejs.org/)**: High-performance asynchronous microservice framework.
 * **[Newtonsoft.Json](https://www.newtonsoft.com/json)**: High-performance JSON serialization for .NET.
 

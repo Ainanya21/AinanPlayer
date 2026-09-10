@@ -26,7 +26,7 @@
 AinanPlayer 是一款专为 Windows 10 / 11 平台打造的原生 Fluent 2 / WinUI 3 影视聚合流媒体播放器：
 * **原生视觉体验**：深度融合 Windows 11 Mica / Acrylic 材质，支持浅色/深色主题实时无缝切换；
 * **多引擎万能爬虫**：原生兼容 TVBox、CatVod、王二小放牛娃猫源（9988）、豆源（2333）等全套数据协议；
-* **双播放内核**：支持离线嵌入式 HLS 原生播放引擎与 **Yaozhi-MPV 极速硬件加速引擎**（支持 4K HDR、HEVC/H.265、杜比视界及 120FPS 超高帧率）；
+* **双轨 Yaozhi-MPV 硬件加速**：内置与外置均全面基于 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**（原生支持 4K HDR、HEVC/H.265、杜比视界及 120FPS 超高帧率），支持应用内无缝嵌入播放与外部独立窗口播放；
 * **实时媒体流探针**：自动侦测并呈现 4K / 1080P、HDR、音频编码与网络延迟状态徽章；
 * **内嵌网盘控制台**：支持夸克、百度、阿里、115、UC 网盘手机扫码一键授权与 4K 高速转存播放。
 
@@ -88,19 +88,18 @@ AinanPlayer 是一款专为 Windows 10 / 11 平台打造的原生 Fluent 2 / Win
 
 ## 7. 播放引擎配置与内外置自定义指南
 
-AinanPlayer 的硬件加速播放核心全面基于 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**，并创新性地提供**内置开箱即用**与**外置发烧定制**双轨架构：
+AinanPlayer 的播放核心全面基于 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**，并创新性地提供**内置开箱即用**与**外置发烧定制**双轨架构，播放模式在「设置」中统一全局掌控，影片详情页点播即开：
 
-### 1. 内置播放内核（免配置 · 开箱即用）
-* **内置 Yaozhil/mpv-Yaozhi 硬件加速**：软件自带经过专业优化调校的内置便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 运行环境（`runtime/mpv/mpv.exe`）。安装或解压后即可直接享受 GPU 极速硬件加速解码，原生支持 4K UHD、HEVC/H.265、杜比视界（Dolby Vision）与 60/120FPS 超高刷新率渲染，零学习成本，无需任何额外配置即可开箱即用。
-* **内置离线 HLS 原生网页引擎**：内嵌完整的离线 `hls.min.js`，零外部 CDN 依赖，断网或极简环境下作为智能兜底。
+### 1. 内置便携内核（免配置 · 原生内嵌秒开）
+* **免配置开箱即用**：软件自带经过专业调校的便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)（`runtime/mpv/mpv.exe`）。安装或解压后直接点播影片即可，原生嵌入在应用主窗口内渲染，享受 GPU 极速硬件加速，原生支持 4K UHD、HEVC/H.265、HDR、杜比视界（Dolby Vision）与 60/120FPS 超高刷新率，无需任何额外配置与第三方依赖。
 
-### 2. 外置自定义播放内核（发烧友自由扩展）
-* **自定义执行程序路径**：同样基于优秀的 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 生态，在「设置」->「播放内核设置」中开启 **「启用外部 MPV 硬件加速播放」**，点击 **「浏览...」** 指定您本地独立安装或自行定制编译的 [mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) `mpv.exe` 路径。
-* **专属着色器与脚本扩展**：当使用外置自定义 Yaozhi-MPV 时，播放器将完整加载您外部配置目录下的 `mpv.conf` 配置，自由挂载自定义着色器（如 Anime4K、FSRCNNX 等 Shaders）、高级画质算法、Lua/JS 脚本插件及个性化快捷键映射。
-* **连通性校验**：配置完成后可直接点击「测试启动播放器」验证外置内核是否正常启动响应。
-
-### 3. 单集即时切换
-* 在任意影片详情页中，右上角均提供 **「使用 Yaozhi-MPV 极速播放」** 快捷开关。无论默认偏好如何，您都可以随时在单部影片中一键在内置/外置 Yaozhi-MPV 与内置网页引擎之间灵活切换。
+### 2. 外置自定义内核（发烧友自由扩展 · 独立窗口）
+* **发烧友自由扩展**：同样基于优秀活跃的 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 生态。若您本地拥有深度定制调校的 Yaozhi-MPV 环境（自定义了 `mpv.conf`、Anime4K / FSRCNNX 超分辨率着色器、Lua 插件脚本或专属快捷键），可前往 **「设置」->「播放内核设置」**；
+* **一键启用与路径配置**：
+  1. 开启 **「启用外部 MPV 硬件加速播放」** 开关；
+  2. 点击 **「浏览...」** 选择您本地的 `mpv.exe` 路径；
+  3. 点击 **「测试启动播放器」** 验证连通性与配置；
+* **全局统一生效**：开启后，在任意影片详情页点击播放，将全自动调用外置 Yaozhi-MPV 独立窗口并加载用户专属配置与滤镜，整季剧集列表自动同步至播放列表。关闭该开关则无缝回退至内置便携内核，纯粹直观。
 
 ---
 
@@ -166,10 +165,9 @@ AinanPlayer 的硬件加速播放核心全面基于 **[Yaozhil/mpv-Yaozhi](https
 
 ### Q4: 如何在内置播放内核与外置自定义 MPV 之间切换？
 * **解答**：
-  * **内外置同源卓越架构**：AinanPlayer 的**内置内核**与**外置播放器**均基于优秀的 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)** 深度打造，拥有完全一致的高性能硬解与 HDR 渲染表现；
-  * **开箱即用（内置）**：软件已自包含完整的内置便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 播放内核（`runtime/mpv/mpv.exe`），未配置外部路径时默认自动调用内置内核，无需额外安装或配置任何依赖；
-  * **发烧扩展（外置）**：若您希望使用自己调校的定制版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)（如集成专属 Anime4K 着色器滤镜、自定义按键映射或 Lua 脚本库），只需在「设置」-「播放内核设置」中开启「启用外部 MPV 硬件加速播放」并指定您的外部 `mpv.exe` 完整路径即可；
-  * **单片微调**：播放时也可以在影片详情页通过「使用 Yaozhi-MPV 极速播放」开关对单部影片进行针对性切换。
+  * **内外置同源卓越架构**：AinanPlayer 的**内置内核**与**外置播放器**均全面基于优秀的 **[Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)** 打造，具备完全一致的高性能硬件解码与 4K HDR 渲染能力；
+  * **开箱即用（内置）**：软件已自包含完整的内置便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)（`runtime/mpv/mpv.exe`），在应用内无缝内嵌播放，无需任何额外配置；
+  * **统一由设置掌控（外置）**：若您希望使用自己配置了专属 Anime4K 着色器、画质滤镜或 Lua 脚本的独立 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)，只需在 **「设置」->「播放内核设置」** 中开启 **「启用外部 MPV 硬件加速播放」** 并指定外置 `mpv.exe` 路径即可，全局统一管控生效，简单省心。
 
 ---
 

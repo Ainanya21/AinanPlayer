@@ -54,8 +54,7 @@
   * 完美支持 `.js.md5`、Base64 加密订阅、标准 TVBox JSON 仓库以及单 CMS 接口的动态自动识别、热下载与多端口隔离加载。
 * **播放引擎双模式架构（内置开箱即用 + 外置自由定制）**：
   * **内置便携版 Yaozhi-MPV 极速硬件加速**：自带独立内置便携版 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 运行内核（`runtime/mpv/mpv.exe`），无需安装任何第三方播放器或复杂配置，安装解压后开箱即享 4K UHD、HEVC/H.265、杜比视界（Dolby Vision）与 60/120FPS 超高刷新率硬件解码。
-  * **外置自定义 Yaozhi-MPV 发烧扩展**：同样基于 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 生态，支持自定义指定本地外部 `mpv.exe` 路径，完整继承用户专属的 `mpv.conf` 配置、Anime4K / FSRCNNX 等超分辨率着色器与 Lua 插件脚本。
-  * **内置离线 HLS 原生播放引擎**：内嵌离线 `hls.min.js`，零 CDN 依赖，断网或轻量环境下智能兜底。
+  * **外置自定义 Yaozhi-MPV 发烧扩展**：同样基于 [Yaozhil/mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi) 生态，支持自定义指定本地外部 `mpv.exe` 路径，完整继承用户专属的 `mpv.conf` 配置、Anime4K / FSRCNNX 等超分辨率着色器与 Lua 插件脚本。统一在「设置」中全局开关控制。
 * **内嵌原生配置中心**：
   * 深度集成扫码与授权控制台，无需跳出浏览器，直接在应用内完成夸克、UC、阿里、百度、115 等网盘账号的扫码授权与转存配置。
 * **智能媒体流元数据实时探针**：
@@ -138,7 +137,6 @@ AinanPlayer 硬件加速引擎全面基于 **[Yaozhil/mpv-Yaozhi](https://github
 * **[mpv](https://mpv.io/) / [mpv-Yaozhi](https://github.com/Yaozhil/mpv-Yaozhi)**：高性能跨平台视频渲染器与硬件加速解码核心，为本项目提供极致的 4K HDR、杜比视界及 120FPS 观影支持。
 * **[WinUI 3](https://github.com/microsoft/WindowsAppSDK) / [Windows App SDK](https://learn.microsoft.com/windows/apps/windows-app-sdk/)**：微软现代 Windows 原生桌面 Fluent 2 视觉体系与 UI 框架。
 * **[CatVodSpider / TVBox 协议生态](https://github.com/)**：开放影视爬虫与数据解析协议生态，提供强大的多源检索与视频解析规范。
-* **[hls.js](https://github.com/video-dev/hls.js/)**：原生流媒体分片传输与 HLS / m3u8 离线解码引擎。
 * **[Fastify](https://fastify.dev/) / [Node.js](https://nodejs.org/)**：高性能异步爬虫调度与微服务通信中间件。
 * **[Newtonsoft.Json](https://www.newtonsoft.com/json)**：.NET 业界标准的 JSON 序列化与数据处理库。
 
