@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<html lang="zh-CN" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,15 @@
   <meta name="description" content="AinanPlayer 是一款基于微软最新原生 WinUI 3 与高性能 MPV 渲染内核打造的 Windows 影视流媒体客户端。无广告、秒播起跳，支持 TVBox/猫源多仓聚合与网盘直链。">
   <meta name="keywords" content="AinanPlayer, WinUI 3, MPV, Windows 11, TVBox, 播放器, 4K HDR, 猫源, 影视聚合">
   <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -43,29 +52,50 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    html.dark ::-webkit-scrollbar-track {
       background: #0b0f19;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1f293d;
+      background: #cbd5e1;
       border-radius: 4px;
     }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+    }
     ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
       background: #374151;
     }
 
     /* Glassmorphism & Aurora Glow */
     .glass-card {
-      background: rgba(17, 24, 39, 0.7);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     }
+    html.dark .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+
     .glass-nav {
-      background: rgba(11, 15, 25, 0.82);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    html.dark .glass-nav {
+      background: rgba(11, 15, 25, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .glow-effect {
       position: relative;
     }
@@ -76,20 +106,24 @@
       left: 15%;
       width: 70%;
       height: 70%;
-      background: radial-gradient(circle, rgba(45, 124, 247, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(45, 124, 247, 0.16) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
       filter: blur(80px);
       z-index: -1;
       pointer-events: none;
     }
-    .glow-badge {
-      box-shadow: 0 0 20px -2px rgba(45, 124, 247, 0.35);
+    html.dark .glow-effect::before {
+      background: radial-gradient(circle, rgba(45, 124, 247, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 70%);
     }
+
     .hero-gradient {
+      background: linear-gradient(180deg, #f8fafd 0%, #edf3fb 50%, #f8fafd 100%);
+    }
+    html.dark .hero-gradient {
       background: linear-gradient(180deg, #0b0f19 0%, #0d1322 50%, #0b0f19 100%);
     }
   </style>
 </head>
-<body class="bg-[#0b0f19] text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
+<body class="bg-[#f8fafd] dark:bg-[#0b0f19] text-slate-800 dark:text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen flex flex-col transition-colors duration-300">
 
   <!-- ================= TOP NAVIGATION ================= -->
   <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
@@ -97,38 +131,52 @@
       <!-- Brand Logo & Title -->
       <a href="#" class="flex items-center gap-3 group">
         <img src="images/logo.png" alt="AinanPlayer Logo" class="w-9 h-9 transition-transform group-hover:scale-105 duration-300">
-        <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-gray-400">
+        <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-gray-100 dark:to-gray-400">
           AinanPlayer
         </span>
-        <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30">
-          v3.8.0
-        </span>
+        <!-- Dual Version Badges -->
+        <div class="hidden sm:flex items-center gap-1.5">
+          <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
+            v3.0.0 正式版
+          </span>
+          <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-500/30">
+            v3.8.0 内测版
+          </span>
+        </div>
       </a>
 
       <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-        <a href="#features" class="hover:text-white transition-colors" data-i18n="nav_features">特性亮点</a>
-        <a href="#showcase" class="hover:text-white transition-colors" data-i18n="nav_showcase">界面预览</a>
-        <a href="#download" class="hover:text-white transition-colors" data-i18n="nav_download">下载中心</a>
-        <a href="USER_GUIDE.md" target="_blank" class="hover:text-white transition-colors" data-i18n="nav_guide">使用指南</a>
-        <a href="#faq" class="hover:text-white transition-colors" data-i18n="nav_faq">常见问题</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-gray-300">
+        <a href="#features" class="hover:text-brand-600 dark:hover:text-white transition-colors" data-i18n="nav_features">特性亮点</a>
+        <a href="#showcase" class="hover:text-brand-600 dark:hover:text-white transition-colors" data-i18n="nav_showcase">界面预览</a>
+        <a href="#download" class="hover:text-brand-600 dark:hover:text-white transition-colors" data-i18n="nav_download">下载中心</a>
+        <a href="USER_GUIDE.md" target="_blank" class="hover:text-brand-600 dark:hover:text-white transition-colors" data-i18n="nav_guide">使用指南</a>
+        <a href="#faq" class="hover:text-brand-600 dark:hover:text-white transition-colors" data-i18n="nav_faq">常见问题</a>
       </nav>
 
-      <!-- Action Buttons & Language Switcher -->
-      <div class="flex items-center gap-3">
+      <!-- Action Buttons (Theme, Lang, Sponsor, GitHub) -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle" class="p-1.5 sm:px-2 sm:py-1 rounded-lg border border-slate-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-slate-100 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-200 transition shadow-sm" title="切换深色/浅色模式">
+          <!-- Sun icon (shown in dark mode, click to light) -->
+          <svg id="themeSun" class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <!-- Moon icon (shown in light mode, click to dark) -->
+          <svg id="themeMoon" class="w-4 h-4 block dark:hidden text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
         <!-- Language Switcher -->
-        <button id="langToggle" class="px-2.5 py-1 text-xs font-semibold rounded-md border border-gray-700 bg-gray-800/80 hover:bg-gray-700 text-gray-200 transition">
+        <button id="langToggle" class="px-2.5 py-1 text-xs font-semibold rounded-lg border border-slate-300 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-slate-100 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-200 transition shadow-sm">
           EN
         </button>
 
         <!-- Sponsor Button -->
-        <button onclick="openSponsorModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-300 hover:bg-pink-500/20 transition">
-          <svg class="w-3.5 h-3.5 text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <button onclick="openSponsorModal()" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-pink-500/10 border border-pink-500/30 text-pink-600 dark:text-pink-300 hover:bg-pink-500/20 transition">
+          <svg class="w-3.5 h-3.5 text-pink-500 dark:text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           <span data-i18n="btn_sponsor">打赏支持</span>
         </button>
 
         <!-- GitHub Repo Button -->
-        <a href="https://github.com/Ainanya21/AinanPlayer" target="_blank" class="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/15 border border-white/10 transition text-white">
+        <a href="https://github.com/Ainanya21/AinanPlayer" target="_blank" class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-white/10 dark:hover:bg-white/15 dark:border dark:border-white/10 transition">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           <span>GitHub</span>
         </a>
@@ -137,62 +185,62 @@
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section class="relative pt-20 pb-28 hero-gradient glow-effect overflow-hidden">
+  <section class="relative pt-16 sm:pt-20 pb-24 sm:pb-28 hero-gradient glow-effect overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       
       <!-- Release Announcement Badge -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card glow-badge text-xs font-medium text-brand-300 mb-8 animate-pulse">
-        <span class="flex h-2 w-2 rounded-full bg-brand-400"></span>
-        <span data-i18n="hero_badge">AinanPlayer v3.8.0 现已发布 • WinUI 3 原生极速视界</span>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs font-medium text-slate-700 dark:text-brand-300 mb-8 shadow-sm">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span data-i18n="hero_badge">v3.0.0 正式版稳定畅享 • v3.8.0 内测版抢先体验</span>
       </div>
 
       <!-- Main Headline -->
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight sm:leading-none mb-6">
-        <span class="text-white" data-i18n="hero_title_1">极速 · 原生 · 纯粹</span><br>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400" data-i18n="hero_title_2">
+        <span class="text-slate-900 dark:text-white" data-i18n="hero_title_1">极速 · 原生 · 纯粹</span><br>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400" data-i18n="hero_title_2">
           Windows 11 现代化 4K 影视聚合客户端
         </span>
       </h1>
 
       <!-- Description Subtitle -->
-      <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 leading-relaxed mb-10" data-i18n="hero_desc">
+      <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-600 dark:text-gray-300 leading-relaxed mb-10" data-i18n="hero_desc">
         基于微软原生 <strong>WinUI 3</strong> 与深度优化的 <strong>Yaozhi-MPV</strong> 高性能渲染引擎打造。零内置广告、毫秒级拖拽秒播，原生支持 TVBox/猫源多仓聚合订阅与网盘 4K 原画直解，还观影以纯净与流畅。
       </p>
 
       <!-- Primary CTA Buttons -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
         <!-- Setup.exe Download Button -->
-        <a href="https://github.com/Ainanya21/AinanPlayer/releases/latest" target="_blank" 
-           class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-500/30 transition-all duration-300 hover:scale-[1.02]">
+        <a href="#download"
+           class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-[1.02]">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.901-1.799"/></svg>
           <div class="text-left">
-            <div class="text-xs text-blue-200" data-i18n="btn_install_sub">推荐绝大多数用户</div>
-            <div class="text-base font-bold" data-i18n="btn_install_main">下载单文件安装包 (.exe)</div>
+            <div class="text-xs text-blue-200" data-i18n="btn_install_sub">前往下载中心</div>
+            <div class="text-base font-bold" data-i18n="btn_install_main">下载正式版 / 内测版安装包</div>
           </div>
         </a>
 
         <!-- Portable.zip Download Button -->
-        <a href="https://github.com/Ainanya21/AinanPlayer/releases/latest" target="_blank"
-           class="w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-semibold transition-all duration-300 hover:scale-[1.02]">
-          <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <a href="https://github.com/Ainanya21/AinanPlayer/releases" target="_blank"
+           class="w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-4 rounded-xl glass-card hover:bg-slate-100 dark:hover:bg-white/10 text-slate-800 dark:text-white font-semibold transition-all duration-300 hover:scale-[1.02]">
+          <svg class="w-5 h-5 text-slate-500 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
           <div class="text-left">
-            <div class="text-xs text-gray-400" data-i18n="btn_portable_sub">解压即用 • 绿色便携</div>
-            <div class="text-base font-bold" data-i18n="btn_portable_main">下载免安装压缩包 (.zip)</div>
+            <div class="text-xs text-slate-500 dark:text-gray-400" data-i18n="btn_portable_sub">GitHub Releases 列表</div>
+            <div class="text-base font-bold" data-i18n="btn_portable_main">浏览全部历史与绿色包</div>
           </div>
         </a>
       </div>
 
       <!-- Quick Platform & Community Meta -->
-      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-400">
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500 dark:text-gray-400">
         <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
           <span data-i18n="meta_system">适配 Windows 10 (1809+) / Windows 11</span>
         </span>
         <span class="flex items-center gap-1.5">
-          <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
           <span data-i18n="meta_runtime">自带完整环境 • 无需额外装运行库</span>
         </span>
-        <a href="https://t.me/AinanPlayer" target="_blank" class="flex items-center gap-1.5 text-blue-400 hover:underline">
+        <a href="https://t.me/AinanPlayer" target="_blank" class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 hover:underline">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
           <span data-i18n="meta_telegram">Telegram 官方频道</span>
         </a>
@@ -202,54 +250,54 @@
   </section>
 
   <!-- ================= INTERACTIVE SHOWCASE ================= -->
-  <section id="showcase" class="py-20 border-t border-b border-gray-800/80 bg-[#0c111d]">
+  <section id="showcase" class="py-20 border-t border-b border-slate-200 dark:border-gray-800/80 bg-slate-100/70 dark:bg-[#0c111d] transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2" data-i18n="showcase_badge">界面与交互</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="showcase_heading">原生现代化 Fluent 视界</p>
-        <p class="mt-3 text-gray-400 text-sm sm:text-base" data-i18n="showcase_sub">
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2" data-i18n="showcase_badge">界面与交互</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" data-i18n="showcase_heading">原生现代化 Fluent 视界</p>
+        <p class="mt-3 text-slate-600 dark:text-gray-400 text-sm sm:text-base" data-i18n="showcase_sub">
           精心雕琢的 Windows 11 原生设计，顶部居中导航、紧凑工具栏与全景海报流，打造如丝般顺滑的大屏观影享受。
         </p>
       </div>
 
-      <!-- Showcase Tabs -->
+      <!-- Showcase Tabs (Clean text without emojis) -->
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8">
         <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20">
-          <span data-i18n="tab_home">🏠 首页精选推荐</span>
+          <span data-i18n="tab_home">首页精选推荐</span>
         </button>
-        <button onclick="switchTab('detail')" id="tab-detail" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-gray-800/80 hover:bg-gray-700 text-gray-300">
-          <span data-i18n="tab_detail">🎬 影视详情与选集</span>
+        <button onclick="switchTab('detail')" id="tab-detail" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
+          <span data-i18n="tab_detail">影视详情与选集</span>
         </button>
-        <button onclick="switchTab('player')" id="tab-player" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-gray-800/80 hover:bg-gray-700 text-gray-300">
-          <span data-i18n="tab_player">⚡ 4K MPV 极速播放</span>
+        <button onclick="switchTab('player')" id="tab-player" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
+          <span data-i18n="tab_player">4K MPV 极速播放</span>
         </button>
-        <button onclick="switchTab('settings')" id="tab-settings" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-gray-800/80 hover:bg-gray-700 text-gray-300">
-          <span data-i18n="tab_settings">🎨 外观与个性化配置</span>
+        <button onclick="switchTab('settings')" id="tab-settings" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
+          <span data-i18n="tab_settings">外观与个性化配置</span>
         </button>
       </div>
 
       <!-- Interactive Preview Card -->
-      <div class="relative rounded-2xl glass-card overflow-hidden shadow-2xl border border-white/10 group">
+      <div class="relative rounded-2xl glass-card overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10 group">
         <!-- Mock Browser / Window Titlebar -->
-        <div class="px-4 py-3 bg-gray-900/90 border-b border-gray-800 flex items-center justify-between text-xs text-gray-400">
+        <div class="px-4 py-3 bg-slate-200/80 dark:bg-gray-900/90 border-b border-slate-300 dark:border-gray-800 flex items-center justify-between text-xs text-slate-600 dark:text-gray-400">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-            <span class="ml-2 font-medium text-gray-300" id="previewTitle">AinanPlayer - 首页精选推荐</span>
+            <span class="ml-2 font-medium text-slate-800 dark:text-gray-300" id="previewTitle">AinanPlayer - 首页精选推荐</span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="hidden sm:inline text-xs text-gray-400" data-i18n="hint_click_zoom">点击图片查看高清大图</span>
-            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+            <span class="hidden sm:inline text-xs text-slate-500 dark:text-gray-400" data-i18n="hint_click_zoom">点击图片查看高清大图</span>
+            <svg class="w-4 h-4 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
           </div>
         </div>
 
         <!-- Image Container -->
-        <div class="relative aspect-[16/10] bg-gray-950 overflow-hidden cursor-zoom-in" onclick="openLightbox()">
+        <div class="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-zoom-in" onclick="openLightbox()">
           <img id="previewImage" src="images/screenshot_home.png" alt="AinanPlayer Preview" 
                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.01]">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
         </div>
       </div>
 
@@ -261,9 +309,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2" data-i18n="features_badge">硬核技术架构</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="features_heading">为什么选择 AinanPlayer？</p>
-        <p class="mt-3 text-gray-400 text-sm sm:text-base" data-i18n="features_sub">
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2" data-i18n="features_badge">硬核技术架构</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" data-i18n="features_heading">为什么选择 AinanPlayer？</p>
+        <p class="mt-3 text-slate-600 dark:text-gray-400 text-sm sm:text-base" data-i18n="features_sub">
           从底层渲染引擎到上层交互体验，拒绝套壳浏览器卡顿，带来真正专业的 Windows 流媒体播放方案。
         </p>
       </div>
@@ -271,45 +319,45 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Feature 1: WinUI 3 Fluent 2 -->
-        <div class="p-6 rounded-2xl glass-card hover:border-brand-500/40 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-5 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl glass-card hover:border-brand-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-i18n="f1_title">原生 WinUI 3 美学</h3>
-          <p class="text-gray-400 text-sm leading-relaxed" data-i18n="f1_desc">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="f1_title">原生 WinUI 3 美学</h3>
+          <p class="text-slate-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="f1_desc">
             基于 Windows App SDK 1.6 与 Fluent 2 设计构建。支持云母（Mica）磨砂半透明质感，深浅色主题无缝切换，更有 4 款品牌质感图标实时热切换。
           </p>
         </div>
 
         <!-- Feature 2: Dual MPV Engine -->
-        <div class="p-6 rounded-2xl glass-card hover:border-indigo-500/40 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl glass-card hover:border-indigo-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-i18n="f2_title">双 MPV 极速硬件加速</h3>
-          <p class="text-gray-400 text-sm leading-relaxed" data-i18n="f2_desc">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="f2_title">双 MPV 极速硬件加速</h3>
+          <p class="text-slate-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="f2_desc">
             深度集成 Yaozhil/mpv 渲染核心。内置便携版开箱即用 4K 60FPS / 杜比视界；外置模式支持自由加载 Anime4K 等着色器与专属配置，极客首选。
           </p>
         </div>
 
         <!-- Feature 3: Dynamic Spider & Cloud Drive -->
-        <div class="p-6 rounded-2xl glass-card hover:border-purple-500/40 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-5 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl glass-card hover:border-purple-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-i18n="f3_title">多源聚合与网盘直解</h3>
-          <p class="text-gray-400 text-sm leading-relaxed" data-i18n="f3_desc">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="f3_title">多源聚合与网盘直解</h3>
+          <p class="text-slate-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="f3_desc">
             完美兼容 TVBox/猫源多协议订阅接口与加密爬虫。内置原生扫码授权控制台，直接无缝直解夸克、阿里、百度、115 等网盘 4K 原画资源。
           </p>
         </div>
 
         <!-- Feature 4: Lightning IO & Pure -->
-        <div class="p-6 rounded-2xl glass-card hover:border-emerald-500/40 transition-all duration-300 group">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
+        <div class="p-6 rounded-2xl glass-card hover:border-emerald-500/50 transition-all duration-300 group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-i18n="f4_title">极速解压与纯粹安全</h3>
-          <p class="text-gray-400 text-sm leading-relaxed" data-i18n="f4_desc">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2" data-i18n="f4_title">极速解压与纯粹安全</h3>
+          <p class="text-slate-600 dark:text-gray-400 text-sm leading-relaxed" data-i18n="f4_desc">
             底层 I/O 深度裁剪优化，剥离千项无用碎片，秒级安装解压。零常驻后台、零内置广告，通过 Defender 绿灯通道，纯粹安心。
           </p>
         </div>
@@ -320,86 +368,167 @@
   </section>
 
   <!-- ================= DOWNLOAD SECTION ================= -->
-  <section id="download" class="py-20 bg-[#0c111d] border-t border-b border-gray-800/80">
+  <section id="download" class="py-20 bg-slate-100/70 dark:bg-[#0c111d] border-t border-b border-slate-200 dark:border-gray-800/80 transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2" data-i18n="dl_badge">下载中心</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="dl_heading">获取 AinanPlayer 最新版本</p>
-        <p class="mt-3 text-gray-400 text-sm sm:text-base" data-i18n="dl_sub">
-          所有构建均已通过自动化流水线完成签名打包，提供两种版本供您选择。
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2" data-i18n="dl_badge">下载中心</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" data-i18n="dl_heading">获取 AinanPlayer 安装包与便携版</p>
+        <p class="mt-3 text-slate-600 dark:text-gray-400 text-sm sm:text-base" data-i18n="dl_sub">
+          提供面向大众用户的 <strong>正式稳定版 (v3.0.0)</strong> 以及面向极客尝鲜的 <strong>最新内测版 (v3.8.0)</strong>。
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        
-        <!-- Setup Installer Card -->
-        <div class="p-8 rounded-2xl glass-card border-brand-500/30 flex flex-col justify-between relative overflow-hidden">
-          <div class="absolute top-0 right-0 px-4 py-1 bg-brand-600 text-[11px] font-bold text-white uppercase rounded-bl-xl tracking-wider" data-i18n="badge_recommended">
-            官方推荐
+      <!-- Version Selector Tabs -->
+      <div class="flex items-center justify-center gap-3 mb-10">
+        <button onclick="switchVersion('stable')" id="ver-tab-stable" class="ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-600 text-white shadow-md shadow-emerald-500/20 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          <span>v3.0.0 正式稳定版</span>
+        </button>
+        <button onclick="switchVersion('beta')" id="ver-tab-beta" class="ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-white dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-gray-700 border border-slate-200 dark:border-transparent flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+          <span>v3.8.0 最新内测版</span>
+        </button>
+      </div>
+
+      <!-- Stable Cards Container -->
+      <div id="ver-content-stable" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Setup Installer Card (Stable) -->
+        <div class="p-8 rounded-2xl glass-card border-emerald-500/30 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 px-4 py-1 bg-emerald-600 text-[11px] font-bold text-white uppercase rounded-bl-xl tracking-wider">
+            正式版推荐
           </div>
           <div>
-            <div class="text-xs font-bold text-brand-400 mb-1">SETUP INSTALLER</div>
-            <h3 class="text-2xl font-extrabold text-white mb-2" data-i18n="card_setup_title">单文件图形安装包</h3>
-            <p class="text-gray-400 text-sm mb-6" data-i18n="card_setup_desc">
-              具备现代化安装向导，支持自定义安装路径，自动创建桌面和开始菜单图标，适合绝大多数家庭及个人电脑用户。
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-1">STABLE RELEASE • v3.0.0</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">单文件安装包 (Setup)</h3>
+            <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
+              具备现代化安装向导，自动配置快捷方式，经过数千名用户实机测试，日常观影最为稳定可靠。
             </p>
 
-            <ul class="space-y-2.5 text-xs text-gray-300 mb-8">
+            <ul class="space-y-2.5 text-xs text-slate-600 dark:text-gray-300 mb-8">
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span data-i18n="card_setup_f1">内置便携版 Yaozhi-MPV 极速解码环境</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>正式版稳定内核 • 经过充分兼容性测试</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span data-i18n="card_setup_f2">支持应用内无缝检查更新</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>支持应用内自动检测更新与网盘直解</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>包体约 270 MB • 单文件极速解包</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>自包含独立运行库 • 适用于 Win10 / Win11</span>
               </li>
             </ul>
           </div>
 
-          <a href="https://github.com/Ainanya21/AinanPlayer/releases/latest" target="_blank"
-             class="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+          <a href="https://github.com/Ainanya21/AinanPlayer/releases/tag/v3.0.0" target="_blank"
+             class="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            <span data-i18n="btn_dl_setup">下载安装包 (AinanPlayer_vX.X.X_Setup.exe)</span>
+            <span>下载 v3.0.0 正式版安装包 (Setup.exe)</span>
           </a>
         </div>
 
-        <!-- Portable Zip Card -->
+        <!-- Portable Zip Card (Stable) -->
         <div class="p-8 rounded-2xl glass-card flex flex-col justify-between">
           <div>
-            <div class="text-xs font-bold text-gray-400 mb-1">PORTABLE ARCHIVE</div>
-            <h3 class="text-2xl font-extrabold text-white mb-2" data-i18n="card_zip_title">免安装便携绿色版</h3>
-            <p class="text-gray-400 text-sm mb-6" data-i18n="card_zip_desc">
-              解压即可直接运行，所有配置文件和播放记录均就地保存在软件根目录下，非常适合放在移动 U 盘中即插即用。
+            <div class="text-xs font-bold text-slate-500 dark:text-gray-400 mb-1">STABLE PORTABLE • v3.0.0</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">免安装便携版 (Portable)</h3>
+            <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
+              解压即可直接运行，无任何安装流程，历史记录与配置文件均保存在当前目录，适合 U 盘携带。
             </p>
 
-            <ul class="space-y-2.5 text-xs text-gray-300 mb-8">
+            <ul class="space-y-2.5 text-xs text-slate-600 dark:text-gray-300 mb-8">
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span data-i18n="card_zip_f1">零注册表残留，零系统污染</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>绿色无残留，零注册表写入</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span data-i18n="card_zip_f2">专属 Deflate-5 优化，解压吞吐满速</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>解压即用，即插即走</span>
               </li>
               <li class="flex items-center gap-2">
-                <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>包体约 195 MB • 解压约 500 MB</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>完整支持 TVBox/猫源多仓订阅导入</span>
               </li>
             </ul>
           </div>
 
-          <a href="https://github.com/Ainanya21/AinanPlayer/releases/latest" target="_blank"
-             class="w-full py-3.5 px-4 rounded-xl bg-white/10 hover:bg-white/15 text-white font-semibold text-center text-sm transition border border-white/10 flex items-center justify-center gap-2">
+          <a href="https://github.com/Ainanya21/AinanPlayer/releases/tag/v3.0.0" target="_blank"
+             class="w-full py-3.5 px-4 rounded-xl bg-slate-900 dark:bg-white/10 hover:bg-slate-800 dark:hover:bg-white/15 text-white font-semibold text-center text-sm transition border border-transparent dark:border-white/10 flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            <span data-i18n="btn_dl_zip">下载便携版 (AinanPlayer_vX.X.X_Portable.zip)</span>
+            <span>下载 v3.0.0 正式版便携包 (Portable.zip)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Beta Cards Container (Hidden by default, switched via tab) -->
+      <div id="ver-content-beta" class="hidden grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Setup Installer Card (Beta) -->
+        <div class="p-8 rounded-2xl glass-card border-brand-500/30 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 px-4 py-1 bg-brand-600 text-[11px] font-bold text-white uppercase rounded-bl-xl tracking-wider">
+            尝鲜内测版
+          </div>
+          <div>
+            <div class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-1">BETA PREVIEW • v3.8.0 内测版</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v3.8.0 内测版安装包</h3>
+            <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
+              包含最新研发成果：居中顶部导航栏、紧凑工具栏、全页标题精简优化、4 款全新品牌图标热切换与 I/O 深度秒级解压。
+            </p>
+
+            <ul class="space-y-2.5 text-xs text-slate-600 dark:text-gray-300 mb-8">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>最新 Fluent 居中导航与全面屏标题精简</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>内置 Yaozhi-MPV 深度优化渲染管道</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>包体约 271 MB • 支持一键覆盖升级</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://github.com/Ainanya21/AinanPlayer/releases" target="_blank"
+             class="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>下载 v3.8.0 内测版安装包 (Setup.exe)</span>
           </a>
         </div>
 
+        <!-- Portable Zip Card (Beta) -->
+        <div class="p-8 rounded-2xl glass-card flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold text-slate-500 dark:text-gray-400 mb-1">BETA PORTABLE • v3.8.0 内测版</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v3.8.0 内测便携版</h3>
+            <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
+              免安装便携绿色版本，采用专属 Deflate-5 优化算法，剥离千项无用碎片，SSD 秒级解压，即解即用。
+            </p>
+
+            <ul class="space-y-2.5 text-xs text-slate-600 dark:text-gray-300 mb-8">
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>全新秒级解压黑科技，I/O 寻道零卡顿</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>便携便携，零后台常驻，Defender 绿灯放行</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>包体约 196 MB • 解压后约 530 MB</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://github.com/Ainanya21/AinanPlayer/releases" target="_blank"
+             class="w-full py-3.5 px-4 rounded-xl bg-slate-900 dark:bg-white/10 hover:bg-slate-800 dark:hover:bg-white/15 text-white font-semibold text-center text-sm transition border border-transparent dark:border-white/10 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span>下载 v3.8.0 内测版便携包 (Portable.zip)</span>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -410,53 +539,53 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center mb-16">
-        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-400 mb-2" data-i18n="faq_badge">解答疑惑</h2>
-        <p class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="faq_heading">常见问题与说明</p>
+        <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2" data-i18n="faq_badge">解答疑惑</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" data-i18n="faq_heading">常见问题与说明</p>
       </div>
 
       <div class="space-y-4">
         
         <!-- FAQ 1 -->
-        <div class="rounded-xl glass-card border border-white/10 overflow-hidden">
-          <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-white hover:text-brand-300 transition">
+        <div class="rounded-xl glass-card border border-slate-200 dark:border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(1)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-300 transition">
             <span data-i18n="q1">Q: AinanPlayer 本身自带影视资源吗？</span>
-            <svg id="faq-icon-1" class="w-5 h-5 transform transition-transform duration-300 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg id="faq-icon-1" class="w-5 h-5 transform transition-transform duration-300 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div id="faq-ans-1" class="px-6 pb-5 text-sm text-gray-400 leading-relaxed hidden" data-i18n="a1">
+          <div id="faq-ans-1" class="px-6 pb-5 text-sm text-slate-600 dark:text-gray-400 leading-relaxed hidden" data-i18n="a1">
             答：AinanPlayer 是一款纯粹的流媒体播放工具与开放协议解析客户端，本身<strong>不内置、不提供、也不存储任何音视频资源</strong>。用户需自行在「订阅管理」页面中添加您所拥有的 TVBox 或猫源规则地址，即可畅享全网聚合浏览与观影。
           </div>
         </div>
 
         <!-- FAQ 2 -->
-        <div class="rounded-xl glass-card border border-white/10 overflow-hidden">
-          <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-white hover:text-brand-300 transition">
+        <div class="rounded-xl glass-card border border-slate-200 dark:border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(2)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-300 transition">
             <span data-i18n="q2">Q: 运行或安装时 Windows Defender 提示“未知发布者”是否安全？</span>
-            <svg id="faq-icon-2" class="w-5 h-5 transform transition-transform duration-300 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg id="faq-icon-2" class="w-5 h-5 transform transition-transform duration-300 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div id="faq-ans-2" class="px-6 pb-5 text-sm text-gray-400 leading-relaxed hidden" data-i18n="a2">
+          <div id="faq-ans-2" class="px-6 pb-5 text-sm text-slate-600 dark:text-gray-400 leading-relaxed hidden" data-i18n="a2">
             答：请完全放心。由于本软件为开源免费项目，未购买商业机构高昂的 EV 代码签名证书，Windows SmartScreen 会提示“未知发布者”。点击「更多信息」并选择「仍要运行」即可正常开启。代码完全在 GitHub 开源透明，绝无任何恶意后门或隐私收集。
           </div>
         </div>
 
         <!-- FAQ 3 -->
-        <div class="rounded-xl glass-card border border-white/10 overflow-hidden">
-          <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-white hover:text-brand-300 transition">
+        <div class="rounded-xl glass-card border border-slate-200 dark:border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(3)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-300 transition">
             <span data-i18n="q3">Q: 内置 Yaozhi-MPV 与外置自定义 MPV 内核有什么区别？</span>
-            <svg id="faq-icon-3" class="w-5 h-5 transform transition-transform duration-300 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg id="faq-icon-3" class="w-5 h-5 transform transition-transform duration-300 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div id="faq-ans-3" class="px-6 pb-5 text-sm text-gray-400 leading-relaxed hidden" data-i18n="a3">
+          <div id="faq-ans-3" class="px-6 pb-5 text-sm text-slate-600 dark:text-gray-400 leading-relaxed hidden" data-i18n="a3">
             答：软件已自带深度优化的便携版 Yaozhil/mpv-Yaozhi 引擎，绝大多数用户无需任何设置即可开箱享受 4K HDR、HEVC 与 60FPS 极速秒播；如果您是进阶发烧友，可在「设置」中指定外部 mpv.exe 路径，完整继承您的个性化 mpv.conf 参数、Anime4K 着色器与 Lua 插件。
           </div>
         </div>
 
         <!-- FAQ 4 -->
-        <div class="rounded-xl glass-card border border-white/10 overflow-hidden">
-          <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-white hover:text-brand-300 transition">
-            <span data-i18n="q4">Q: 网盘扫码授权如何运作？会不会泄漏密码？</span>
-            <svg id="faq-icon-4" class="w-5 h-5 transform transition-transform duration-300 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        <div class="rounded-xl glass-card border border-slate-200 dark:border-white/10 overflow-hidden">
+          <button onclick="toggleFaq(4)" class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-slate-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-300 transition">
+            <span data-i18n="q4">Q: 正式版与内测版有什么区别？我该如何选择？</span>
+            <svg id="faq-icon-4" class="w-5 h-5 transform transition-transform duration-300 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div id="faq-ans-4" class="px-6 pb-5 text-sm text-gray-400 leading-relaxed hidden" data-i18n="a4">
-            答：AinanPlayer 采用官方 OAuth / 二维码扫码登录流程，您的密码不会经过第三方。生成的授权 Token / Cookie 仅保存在本地设备，用于向网盘官方接口请求视频直链并自动转存播放，杜绝任何外部泄漏。
+          <div id="faq-ans-4" class="px-6 pb-5 text-sm text-slate-600 dark:text-gray-400 leading-relaxed hidden" data-i18n="a4">
+            答：目前官方正式稳定版本为 <strong>v3.0.0</strong>，追求最稳妥观影体验的普通用户建议选用正式版；而 <strong>v3.8.0 内测版</strong> 包含最新迭代的居中导航栏、界面大标题精简、4款品牌图标热切换与秒级解压等前沿特性，喜欢尝鲜最新特性的用户欢迎下载内测版体验！
           </div>
         </div>
 
@@ -466,66 +595,66 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="mt-auto border-t border-gray-800 bg-[#080b12] py-12 text-xs text-gray-500">
+  <footer class="mt-auto border-t border-slate-200 dark:border-gray-800 bg-slate-100 dark:bg-[#080b12] py-12 text-xs text-slate-500 dark:text-gray-500 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         
         <div class="flex items-center gap-3">
           <img src="images/logo.png" alt="AinanPlayer" class="w-7 h-7">
           <div>
-            <span class="font-bold text-gray-300 text-sm">AinanPlayer</span>
-            <span class="text-gray-500 ml-2">© 2026 Ainan Studio. All rights reserved.</span>
+            <span class="font-bold text-slate-800 dark:text-gray-300 text-sm">AinanPlayer</span>
+            <span class="text-slate-500 dark:text-gray-500 ml-2">© 2026 Ainan Studio. All rights reserved.</span>
           </div>
         </div>
 
         <!-- Links -->
         <div class="flex flex-wrap items-center gap-6">
-          <a href="https://github.com/Ainanya21/AinanPlayer" target="_blank" class="hover:text-gray-300 transition">GitHub 仓库</a>
-          <a href="USER_GUIDE.md" target="_blank" class="hover:text-gray-300 transition">用户指南</a>
-          <a href="https://t.me/AinanPlayer" target="_blank" class="hover:text-gray-300 transition">Telegram 频道</a>
-          <a href="https://t.me/AinanPlayerChat" target="_blank" class="hover:text-gray-300 transition">交流群组</a>
-          <button onclick="openSponsorModal()" class="hover:text-pink-400 transition">赞助支持</button>
+          <a href="https://github.com/Ainanya21/AinanPlayer" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">GitHub 仓库</a>
+          <a href="USER_GUIDE.md" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">用户指南</a>
+          <a href="https://t.me/AinanPlayer" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">Telegram 频道</a>
+          <a href="https://t.me/AinanPlayerChat" target="_blank" class="hover:text-slate-900 dark:hover:text-gray-300 transition">交流群组</a>
+          <button onclick="openSponsorModal()" class="hover:text-pink-600 dark:hover:text-pink-400 transition">赞助支持</button>
         </div>
 
       </div>
 
-      <div class="mt-6 pt-6 border-t border-gray-800/60 text-center text-gray-600 leading-relaxed" data-i18n="footer_disclaimer">
+      <div class="mt-6 pt-6 border-t border-slate-200/60 dark:border-gray-800/60 text-center text-slate-500 dark:text-gray-600 leading-relaxed" data-i18n="footer_disclaimer">
         免责声明：本客户端仅作为开源视听协议渲染工具，不提供、不抓取、不存储任何音视频媒体。所有功能需配合用户合法自定义订阅源使用。
       </div>
     </div>
   </footer>
 
   <!-- ================= SPONSOR MODAL ================= -->
-  <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="bg-[#111827] border border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+  <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200 text-slate-800 dark:text-white">
       
-      <button onclick="closeSponsorModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+      <button onclick="closeSponsorModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:text-gray-400 dark:hover:text-white transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
       <div class="text-center mb-6">
-        <div class="w-12 h-12 rounded-full bg-pink-500/10 text-pink-400 flex items-center justify-center mx-auto mb-3">
+        <div class="w-12 h-12 rounded-full bg-pink-500/10 text-pink-600 dark:text-pink-400 flex items-center justify-center mx-auto mb-3">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-white mb-1" data-i18n="modal_sponsor_title">支持 AinanPlayer 的持续开发</h3>
-        <p class="text-xs text-gray-400" data-i18n="modal_sponsor_sub">如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕</p>
+        <h3 class="text-xl font-bold mb-1" data-i18n="modal_sponsor_title">支持 AinanPlayer 的持续开发</h3>
+        <p class="text-xs text-slate-500 dark:text-gray-400" data-i18n="modal_sponsor_sub">如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕</p>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
         <!-- WeChat Pay -->
-        <div class="bg-gray-800/60 p-4 rounded-xl text-center border border-gray-700/50">
-          <div class="text-xs font-semibold text-emerald-400 mb-2">微信支付 (WeChat)</div>
-          <img src="wechat_pay.jpg" alt="微信赞赏码" class="w-full rounded-lg aspect-square object-cover shadow">
+        <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
+          <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">微信支付 (WeChat)</div>
+          <img src="wechat_pay.jpg" alt="微信赞赏码" class="w-full rounded-lg aspect-square object-cover shadow-sm">
         </div>
         <!-- Alipay -->
-        <div class="bg-gray-800/60 p-4 rounded-xl text-center border border-gray-700/50">
-          <div class="text-xs font-semibold text-blue-400 mb-2">支付宝 (Alipay)</div>
-          <img src="alipay.jpg" alt="支付宝赞赏码" class="w-full rounded-lg aspect-square object-cover shadow">
+        <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
+          <div class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">支付宝 (Alipay)</div>
+          <img src="alipay.jpg" alt="支付宝赞赏码" class="w-full rounded-lg aspect-square object-cover shadow-sm">
         </div>
       </div>
 
       <div class="mt-6 text-center">
-        <button onclick="closeSponsorModal()" class="px-6 py-2 text-xs font-semibold text-gray-300 hover:text-white rounded-lg bg-gray-800 hover:bg-gray-700 transition">
+        <button onclick="closeSponsorModal()" class="px-6 py-2 text-xs font-semibold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white rounded-lg bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 transition">
           关闭
         </button>
       </div>
@@ -545,7 +674,7 @@
 
   <!-- ================= SCRIPTS ================= -->
   <script>
-    // Tab switching data
+    // Tab switching data (Clean titles without emojis)
     const showcaseTabs = {
       home: {
         img: 'images/screenshot_home.png',
@@ -579,12 +708,12 @@
       // Update tabs styling
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-500/20');
-        btn.classList.add('bg-gray-800/80', 'text-gray-300');
+        btn.classList.add('bg-white', 'dark:bg-gray-800/80', 'text-slate-700', 'dark:text-gray-300', 'border', 'border-slate-200', 'dark:border-transparent');
       });
       const activeBtn = document.getElementById('tab-' + tabKey);
       if (activeBtn) {
         activeBtn.classList.add('bg-brand-600', 'text-white', 'shadow-md', 'shadow-brand-500/20');
-        activeBtn.classList.remove('bg-gray-800/80', 'text-gray-300');
+        activeBtn.classList.remove('bg-white', 'dark:bg-gray-800/80', 'text-slate-700', 'dark:text-gray-300', 'border', 'border-slate-200', 'dark:border-transparent');
       }
 
       // Update image & title
@@ -593,6 +722,37 @@
       imgElem.src = tabData.img;
       document.getElementById('previewTitle').innerText = currentLang === 'zh' ? tabData.titleZh : tabData.titleEn;
     }
+
+    // Version switcher (Stable vs Beta)
+    function switchVersion(ver) {
+      const stableTab = document.getElementById('ver-tab-stable');
+      const betaTab = document.getElementById('ver-tab-beta');
+      const stableContent = document.getElementById('ver-content-stable');
+      const betaContent = document.getElementById('ver-content-beta');
+
+      if (ver === 'stable') {
+        stableTab.className = 'ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-600 text-white shadow-md shadow-emerald-500/20 flex items-center gap-2';
+        betaTab.className = 'ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-white dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-gray-700 border border-slate-200 dark:border-transparent flex items-center gap-2';
+        stableContent.classList.remove('hidden');
+        stableContent.classList.add('grid');
+        betaContent.classList.remove('grid');
+        betaContent.classList.add('hidden');
+      } else {
+        betaTab.className = 'ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-brand-600 text-white shadow-md shadow-brand-500/20 flex items-center gap-2';
+        stableTab.className = 'ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-white dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-gray-700 border border-slate-200 dark:border-transparent flex items-center gap-2';
+        betaContent.classList.remove('hidden');
+        betaContent.classList.add('grid');
+        stableContent.classList.remove('grid');
+        stableContent.classList.add('hidden');
+      }
+    }
+
+    // Theme Toggle Handler
+    const themeToggleBtn = document.getElementById('themeToggle');
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
 
     // Lightbox Modal
     function openLightbox() {
@@ -642,24 +802,24 @@
         nav_guide: '使用指南',
         nav_faq: '常见问题',
         btn_sponsor: '打赏支持',
-        hero_badge: 'AinanPlayer v3.8.0 现已发布 • WinUI 3 原生极速视界',
+        hero_badge: 'v3.0.0 正式版稳定畅享 • v3.8.0 内测版抢先体验',
         hero_title_1: '极速 · 原生 · 纯粹',
         hero_title_2: 'Windows 11 现代化 4K 影视聚合客户端',
         hero_desc: '基于微软原生 WinUI 3 与深度优化的 Yaozhi-MPV 高性能渲染引擎打造。零内置广告、毫秒级拖拽秒播，原生支持 TVBox/猫源多仓聚合订阅与网盘 4K 原画直解，还观影以纯净与流畅。',
-        btn_install_sub: '推荐绝大多数用户',
-        btn_install_main: '下载单文件安装包 (.exe)',
-        btn_portable_sub: '解压即用 • 绿色便携',
-        btn_portable_main: '下载免安装压缩包 (.zip)',
+        btn_install_sub: '前往下载中心',
+        btn_install_main: '下载正式版 / 内测版安装包',
+        btn_portable_sub: 'GitHub Releases 列表',
+        btn_portable_main: '浏览全部历史与绿色包',
         meta_system: '适配 Windows 10 (1809+) / Windows 11',
         meta_runtime: '自带完整环境 • 无需额外装运行库',
         meta_telegram: 'Telegram 官方频道',
         showcase_badge: '界面与交互',
         showcase_heading: '原生现代化 Fluent 视界',
         showcase_sub: '精心雕琢的 Windows 11 原生设计，顶部居中导航、紧凑工具栏与全景海报流，打造如丝般顺滑的大屏观影享受。',
-        tab_home: '🏠 首页精选推荐',
-        tab_detail: '🎬 影视详情与选集',
-        tab_player: '⚡ 4K MPV 极速播放',
-        tab_settings: '🎨 外观与个性化配置',
+        tab_home: '首页精选推荐',
+        tab_detail: '影视详情与选集',
+        tab_player: '4K MPV 极速播放',
+        tab_settings: '外观与个性化配置',
         hint_click_zoom: '点击图片查看高清大图',
         features_badge: '硬核技术架构',
         features_heading: '为什么选择 AinanPlayer？',
@@ -673,29 +833,16 @@
         f4_title: '极速解压与纯粹安全',
         f4_desc: '底层 I/O 深度裁剪优化，剥离千项无用碎片，秒级安装解压。零常驻后台、零内置广告，通过 Defender 绿灯通道，纯粹安心。',
         dl_badge: '下载中心',
-        dl_heading: '获取 AinanPlayer 最新版本',
-        dl_sub: '所有构建均已通过自动化流水线完成签名打包，提供两种版本供您选择。',
-        badge_recommended: '官方推荐',
-        card_setup_title: '单文件图形安装包',
-        card_setup_desc: '具备现代化安装向导，支持自定义安装路径，自动创建桌面和开始菜单图标，适合绝大多数家庭及个人电脑用户。',
-        card_setup_f1: '内置便携版 Yaozhi-MPV 极速解码环境',
-        card_setup_f2: '支持应用内无缝检查更新',
-        btn_dl_setup: '下载安装包 (AinanPlayer_vX.X.X_Setup.exe)',
-        card_zip_title: '免安装便携绿色版',
-        card_zip_desc: '解压即可直接运行，所有配置文件和播放记录均就地保存在软件根目录下，非常适合放在移动 U 盘中即插即用。',
-        card_zip_f1: '零注册表残留，零系统污染',
-        card_zip_f2: '专属 Deflate-5 优化，解压吞吐满速',
-        btn_dl_zip: '下载便携版 (AinanPlayer_vX.X.X_Portable.zip)',
-        faq_badge: '解答疑惑',
-        faq_heading: '常见问题与说明',
+        dl_heading: '获取 AinanPlayer 安装包与便携版',
+        dl_sub: '提供面向大众用户的 正式稳定版 (v3.0.0) 以及面向极客尝鲜的 最新内测版 (v3.8.0)。',
         q1: 'Q: AinanPlayer 本身自带影视资源吗？',
         a1: '答：AinanPlayer 是一款纯粹的流媒体播放工具与开放协议解析客户端，本身<strong>不内置、不提供、也不存储任何音视频资源</strong>。用户需自行在「订阅管理」页面中添加您所拥有的 TVBox 或猫源规则地址，即可畅享全网聚合浏览与观影。',
         q2: 'Q: 运行或安装时 Windows Defender 提示“未知发布者”是否安全？',
         a2: '答：请完全放心。由于本软件为开源免费项目，未购买商业机构高昂的 EV 代码签名证书，Windows SmartScreen 会提示“未知发布者”。点击「更多信息」并选择「仍要运行」即可正常开启。代码完全在 GitHub 开源透明，绝无任何恶意后门或隐私收集。',
         q3: 'Q: 内置 Yaozhi-MPV 与外置自定义 MPV 内核有什么区别？',
         a3: '答：软件已自带深度优化的便携版 Yaozhil/mpv-Yaozhi 引擎，绝大多数用户无需任何设置即可开箱享受 4K HDR、HEVC 与 60FPS 极速秒播；如果您是进阶发烧友，可在「设置」中指定外部 mpv.exe 路径，完整继承您的个性化 mpv.conf 参数、Anime4K 着色器与 Lua 插件。',
-        q4: 'Q: 网盘扫码授权如何运作？会不会泄漏密码？',
-        a4: '答：AinanPlayer 采用官方 OAuth / 二维码扫码登录流程，您的密码不会经过第三方。生成的授权 Token / Cookie 仅保存在本地设备，用于向网盘官方接口请求视频直链并自动转存播放，杜绝任何外部泄漏。',
+        q4: 'Q: 正式版与内测版有什么区别？我该如何选择？',
+        a4: '答：目前官方正式稳定版本为 <strong>v3.0.0</strong>，追求最稳妥观影体验的普通用户建议选用正式版；而 <strong>v3.8.0 内测版</strong> 包含最新迭代的居中导航栏、界面大标题精简、4款品牌图标热切换与秒级解压等前沿特性，喜欢尝鲜最新特性的用户欢迎下载内测版体验！',
         footer_disclaimer: '免责声明：本客户端仅作为开源视听协议渲染工具，不提供、不抓取、不存储任何音视频媒体。所有功能需配合用户合法自定义订阅源使用。',
         modal_sponsor_title: '支持 AinanPlayer 的持续开发',
         modal_sponsor_sub: '如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕'
@@ -707,24 +854,24 @@
         nav_guide: 'User Guide',
         nav_faq: 'FAQ',
         btn_sponsor: 'Sponsor',
-        hero_badge: 'AinanPlayer v3.8.0 Released • Native WinUI 3 Ultra-Speed Experience',
+        hero_badge: 'v3.0.0 Stable Released • v3.8.0 Beta Available',
         hero_title_1: 'Fast · Native · Pure',
         hero_title_2: 'Modern Windows 11 4K Media Aggregator & Player',
         hero_desc: 'Crafted with native WinUI 3 and a customized Yaozhi-MPV hardware accelerated rendering core. Zero ads, instant playback, multi-source TVBox/CatVod subscription aggregation, and 4K cloud drive streaming.',
-        btn_install_sub: 'Recommended for most users',
-        btn_install_main: 'Download Setup Wizard (.exe)',
-        btn_portable_sub: 'Extract & Play • Green Portable',
-        btn_portable_main: 'Download Portable Archive (.zip)',
+        btn_install_sub: 'Go to Downloads',
+        btn_install_main: 'Download Stable / Beta Setup',
+        btn_portable_sub: 'GitHub Releases',
+        btn_portable_main: 'Browse All History & Portable',
         meta_system: 'Windows 10 (1809+) / Windows 11 (64-bit)',
         meta_runtime: 'Fully Self-Contained • No extra runtimes needed',
         meta_telegram: 'Official Telegram Channel',
         showcase_badge: 'Interface & Motion',
         showcase_heading: 'Native Modern Fluent Aesthetics',
         showcase_sub: 'Carefully engineered Windows 11 Fluent Design with centered top navigation, compact toolbar, and poster wall flow for an immersive big-screen experience.',
-        tab_home: '🏠 Home Recommendations',
-        tab_detail: '🎬 Media Details & Episodes',
-        tab_player: '⚡ 4K MPV Hardware Playback',
-        tab_settings: '🎨 Appearance & Settings',
+        tab_home: 'Home Recommendations',
+        tab_detail: 'Media Details & Episodes',
+        tab_player: '4K MPV Hardware Playback',
+        tab_settings: 'Appearance & Settings',
         hint_click_zoom: 'Click screenshot for full resolution',
         features_badge: 'Architecture',
         features_heading: 'Why Choose AinanPlayer?',
@@ -738,29 +885,16 @@
         f4_title: 'Lightning I/O & Clean Security',
         f4_desc: 'Deep file-pruning optimization removing thousands of unused files. Instant SSD extraction, zero background residue, and smooth Windows Defender pass-through.',
         dl_badge: 'Downloads',
-        dl_heading: 'Get the Latest AinanPlayer',
-        dl_sub: 'All builds are packaged and signed via automated CI pipelines. Two distribution flavors available.',
-        badge_recommended: 'Recommended',
-        card_setup_title: 'Setup Installer',
-        card_setup_desc: 'Modern graphical setup wizard supporting custom paths and desktop shortcuts. Perfect for home PCs and laptops.',
-        card_setup_f1: 'Bundled with portable Yaozhi-MPV hardware runtime',
-        card_setup_f2: 'Seamless in-app update checks',
-        btn_dl_setup: 'Download Setup (AinanPlayer_vX.X.X_Setup.exe)',
-        card_zip_title: 'Portable Standalone Archive',
-        card_zip_desc: 'Extract and launch immediately. Configs and history are kept locally in the application folder, ideal for USB drives.',
-        card_zip_f1: 'Zero registry entries, zero system residue',
-        card_zip_f2: 'Deflate-5 optimized for instant multi-megabyte extraction',
-        btn_dl_zip: 'Download Portable (AinanPlayer_vX.X.X_Portable.zip)',
-        faq_badge: 'FAQ',
-        faq_heading: 'Frequently Asked Questions',
+        dl_heading: 'Get AinanPlayer Setup & Portable',
+        dl_sub: 'Choose between Stable Release (v3.0.0) for daily reliability and Latest Beta (v3.8.0) for the latest features.',
         q1: 'Q: Does AinanPlayer provide built-in media content?',
         a1: 'Answer: AinanPlayer is purely a client rendering engine and open protocol player. It does <strong>NOT host, provide, or store any media content</strong>. Users can import their own TVBox or CatVod subscription URLs.',
         q2: 'Q: Is it safe when Windows Defender alerts "Unknown Publisher"?',
         a2: 'Answer: Completely safe. As an open-source project without costly commercial EV code-signing certificates, Windows SmartScreen flags unknown publishers. Click "More info" and "Run anyway". All source code is transparent on GitHub.',
         q3: 'Q: What is the difference between Built-in and External MPV engines?',
         a3: 'Answer: The app bundles an optimized portable Yaozhil/mpv-Yaozhi engine for instant 4K HDR playback. Enthusiasts can also point to their own external mpv.exe in Settings to use personal mpv.conf and Shaders.',
-        q4: 'Q: How does Cloud Drive QR scan work? Will my password leak?',
-        a4: 'Answer: We use official QR-code OAuth login flows. Your password is never touched. The resulting authorization cookies/tokens are stored only on your local machine to request streaming direct links.',
+        q4: 'Q: What is the difference between Stable and Beta releases?',
+        a4: 'Answer: Currently, the official stable release is <strong>v3.0.0</strong> for solid daily usage. The <strong>v3.8.0 Beta</strong> includes newly refined centered navigation, cleaned page titles, 4-style live icon switching, and instant I/O decompression.',
         footer_disclaimer: 'Disclaimer: This client is purely an open-source streaming protocol tool and does not provide or store audio/video media.',
         modal_sponsor_title: 'Support AinanPlayer Development',
         modal_sponsor_sub: 'If AinanPlayer has made your media experience better, buy the developer a coffee! ☕'
