@@ -467,7 +467,7 @@
         <!-- Setup Installer Card (Beta) -->
         <div class="p-8 rounded-2xl glass-card border-pink-500/30 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute top-0 right-0 px-4 py-1 bg-gradient-to-r from-pink-600 to-rose-600 text-[11px] font-bold text-white uppercase rounded-bl-xl tracking-wider">
-            💖 捐赠专属内测
+            捐赠专属内测
           </div>
           <div>
             <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PREVIEW • v3.8.0</div>
@@ -495,14 +495,14 @@
           <button onclick="openSponsorModal('beta')"
              class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-pink-600/25 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span>💖 捐赠支持获取 v3.8.0 内测版安装包</span>
+            <span>捐赠支持获取 v3.8.0 内测版安装包</span>
           </button>
         </div>
 
         <!-- Portable Zip Card (Beta) -->
         <div class="p-8 rounded-2xl glass-card border-pink-500/30 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute top-0 right-0 px-4 py-1 bg-gradient-to-r from-pink-600 to-rose-600 text-[11px] font-bold text-white uppercase rounded-bl-xl tracking-wider">
-            💖 捐赠专属内测
+            捐赠专属内测
           </div>
           <div>
             <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PORTABLE • v3.8.0</div>
@@ -530,7 +530,7 @@
           <button onclick="openSponsorModal('beta')"
              class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-pink-600/25 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span>💖 捐赠支持获取 v3.8.0 内测便携包</span>
+            <span>捐赠支持获取 v3.8.0 内测便携包</span>
           </button>
         </div>
       </div>
@@ -644,9 +644,9 @@
         <p class="text-xs text-slate-500 dark:text-gray-400" data-i18n="modal_sponsor_sub">如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕</p>
       </div>
 
-      <!-- Beta acquisition notice (shown when opened with 'beta') -->
-      <div id="sponsorModalNotice" class="hidden mb-5 p-3.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-xs text-pink-700 dark:text-pink-300 leading-relaxed text-center">
-        💖 <strong data-i18n="modal_beta_notice_bold">v3.8.0 内测版获取指引</strong>：<span data-i18n="modal_beta_notice_desc">扫码捐赠支持（金额不限，随心赞助）后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！</span>
+      <!-- Beta Notice (Shown dynamically when mode === 'beta') -->
+      <div id="sponsorModalNotice" class="hidden mb-5 p-3 rounded-xl bg-pink-500/10 border border-pink-500/30 text-xs text-pink-700 dark:text-pink-300 leading-relaxed text-left">
+        <strong data-i18n="modal_beta_notice_bold">v3.8.0 内测版获取指引</strong>：<span data-i18n="modal_beta_notice_desc">扫码捐赠支持（金额不限，随心赞助）后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！</span>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
