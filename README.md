@@ -60,6 +60,14 @@
   * Scan-to-login QR code console embedded directly within the application for Quark, UC, Alibaba Cloud, Baidu Netdisk, and 115, enabling automated cloud transfer and 4K streaming.
 * **Kernel-Level Real-Time Playback Telemetry**:
   * Real-time extraction of actual decoded resolution (e.g., 1080P FHD, 4K UHD), pixel dimensions (`1920×1080`, `3840×2160`), video/audio codecs, and live stream bitrates.
+* **Lightweight IPTV Live TV Streaming & EPG Engine**:
+  * Integrated "Live" TV section directly accessible from the centered top navigation capsule.
+  * Import custom remote M3U / TXT playlist URLs or select local `.m3u` / `.txt` files with zero bundled third-party streams for complete legal and privacy safety.
+  * Automatic intelligent channel categorization (CCTV, Satellite, Regional, HD), automatic channel logo matching, and real-time EPG program guide schedule display.
+  * Instant switching between embedded WebView2 playback and independent external MPV window hardware acceleration with auto-reconnect fallback.
+* **Immersive Full-Bleed Top Bar & Frosted Glass Capsules**:
+  * Edge-to-edge poster hero headers extending to the window top boundary for an expansive visual canvas.
+  * High-transparency frosted glass (Acrylic / Mica) floating capsule navigation buttons with smooth hover transitions.
 * **Cross-Source Aggregate Search & Filter**:
   * Asynchronous concurrent multi-site searching and multi-level category filtering to discover high-quality media across all active subscription sites.
 
