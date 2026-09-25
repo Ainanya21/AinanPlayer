@@ -33,6 +33,16 @@
 
 <br/>
 
+### 演职员表与智能相似内容推荐 (全方位影视元数据与沉浸式卡片)
+![演职员与推荐](docs/images/screenshot_detail_2.png)
+
+<br/>
+
+### IPTV 电视直播与央卫视节目流 (支持自定义 M3U/TXT 订阅与实时 EPG)
+![电视直播](docs/images/screenshot_live.png)
+
+<br/>
+
 ### 外观与个性化主题配置 (深浅主题无缝切换与强调色拾色器)
 ![外观设置](docs/images/screenshot_settings.png)
 

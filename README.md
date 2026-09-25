@@ -33,6 +33,16 @@
 
 <br/>
 
+### Cast, Crew & Similar Media Recommendations (Rich Metadata & Immersive Cards)
+![Cast & Recommendations](docs/images/screenshot_detail_2.png)
+
+<br/>
+
+### Lightweight IPTV Live TV Streaming & EPG (Custom M3U/TXT Playlists & Real-Time Guide)
+![IPTV Live TV](docs/images/screenshot_live.png)
+
+<br/>
+
 ### Personalization & Appearance (Seamless Light/Dark Themes & Accent Color Picker)
 ![Appearance Settings](docs/images/screenshot_settings.png)
 

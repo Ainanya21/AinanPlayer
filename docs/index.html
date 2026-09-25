@@ -140,7 +140,7 @@
             v3.8.0 正式版
           </span>
           <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-brand-500/15 text-brand-700 dark:text-brand-300 border border-brand-500/30">
-            v4.1.1 内测版
+            v4.1.4 内测版
           </span>
         </div>
       </a>
@@ -191,7 +191,7 @@
       <!-- Release Announcement Badge -->
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs font-medium text-slate-700 dark:text-brand-300 mb-8 shadow-sm">
         <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span data-i18n="hero_badge">v3.8.0 正式版稳定畅享 • v4.1.1 内测版抢先体验</span>
+        <span data-i18n="hero_badge">v3.8.0 正式版稳定畅享 • v4.1.4 内测版抢先体验</span>
       </div>
 
       <!-- Main Headline -->
@@ -268,6 +268,12 @@
         </button>
         <button onclick="switchTab('detail')" id="tab-detail" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
           <span data-i18n="tab_detail">影视详情与选集</span>
+        </button>
+        <button onclick="switchTab('detail2')" id="tab-detail2" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
+          <span data-i18n="tab_detail2">演职员与推荐</span>
+        </button>
+        <button onclick="switchTab('live')" id="tab-live" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
+          <span data-i18n="tab_live">IPTV 电视直播</span>
         </button>
         <button onclick="switchTab('player')" id="tab-player" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white dark:bg-gray-800/80 hover:bg-slate-50 dark:hover:bg-gray-700 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-transparent">
           <span data-i18n="tab_player">4K MPV 极速播放</span>
@@ -397,7 +403,7 @@
         <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2" data-i18n="dl_badge">下载中心</h2>
         <p class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" data-i18n="dl_heading">获取 AinanPlayer 安装包与便携版</p>
         <p class="mt-3 text-slate-600 dark:text-gray-400 text-sm sm:text-base" data-i18n="dl_sub">
-          面向大众用户免费提供 <strong>正式稳定版 (v3.8.0)</strong>；<strong>最新内测版 (v4.1.1)</strong> 包含前沿重构特性，需要捐赠支持才可下载使用。
+          面向大众用户免费提供 <strong>正式稳定版 (v3.8.0)</strong>；<strong>最新内测版 (v4.1.4)</strong> 包含前沿重构特性，需要捐赠支持才可下载使用。
         </p>
       </div>
 
@@ -409,7 +415,7 @@
         </button>
         <button onclick="switchVersion('beta')" id="ver-tab-beta" class="ver-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-white dark:bg-gray-800 text-slate-700 dark:text-gray-300 hover:bg-slate-50 dark:hover:bg-gray-700 border border-slate-200 dark:border-transparent flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-pink-500"></span>
-          <span>v4.1.1 最新内测版</span>
+          <span>v4.1.4 最新内测版</span>
           <span class="px-1.5 py-0.5 text-[10px] rounded bg-pink-500/15 text-pink-600 dark:text-pink-400 font-semibold" data-i18n="tag_sponsor_only">捐赠专属</span>
         </button>
       </div>
@@ -492,8 +498,8 @@
             捐赠专属内测
           </div>
           <div>
-            <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PREVIEW • v4.1.1</div>
-            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v4.1.1 内测版安装包</h3>
+            <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PREVIEW • v4.1.4</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v4.1.4 内测版安装包</h3>
             <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
               包含最新研发成果：双击放大全屏与滚轮调音、全新弹幕防遮挡算法与 1/16 极窄屏幕、IPTV 电视直播与实时 EPG、观看历史单条删除与防断流秒播等。<strong>内测版本需捐赠支持本项目后才可获取下载使用。</strong>
             </p>
@@ -517,7 +523,7 @@
           <button onclick="openSponsorModal('beta')"
              class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-pink-600/25 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span>捐赠支持获取 v4.1.1 内测版安装包</span>
+            <span>捐赠支持获取 v4.1.4 内测版安装包</span>
           </button>
         </div>
 
@@ -527,8 +533,8 @@
             捐赠专属内测
           </div>
           <div>
-            <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PORTABLE • v4.1.1</div>
-            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v4.1.1 内测便携版</h3>
+            <div class="text-xs font-bold text-pink-600 dark:text-pink-400 mb-1">BETA PORTABLE • v4.1.4</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">v4.1.4 内测便携版</h3>
             <p class="text-slate-600 dark:text-gray-400 text-sm mb-6">
               免安装便携绿色版本，采用专属 Deflate-5 优化算法，内置完整 .NET 8 独立运行时，SSD 秒级解压，即解即用。<strong>内测版本需捐赠支持本项目后才可获取下载使用。</strong>
             </p>
@@ -552,7 +558,7 @@
           <button onclick="openSponsorModal('beta')"
              class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-semibold text-center text-sm transition shadow-lg shadow-pink-600/25 flex items-center justify-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-            <span>捐赠支持获取 v4.1.1 内测便携包</span>
+            <span>捐赠支持获取 v4.1.4 内测便携包</span>
           </button>
         </div>
       </div>
@@ -611,7 +617,7 @@
             <svg id="faq-icon-4" class="w-5 h-5 transform transition-transform duration-300 text-slate-400 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div id="faq-ans-4" class="px-6 pb-5 text-sm text-slate-600 dark:text-gray-400 leading-relaxed hidden" data-i18n="a4">
-            答：目前官方正式稳定版本为 <strong>v3.8.0</strong>，面向所有用户<strong>完全免费</strong>开放下载，日常观影稳定可靠；而 <strong>v4.1.1 内测版</strong> 包含最新研发的双击全屏缩放、鼠标滚轮音量与悬浮 HUD、重构弹幕防遮挡与 1/16 极窄区域、IPTV 直播等前沿特性，<strong>需要捐赠支持本项目</strong>才可下载使用。感谢每一位捐赠者的支持，助力 AinanPlayer 持续迭代！
+            答：目前官方正式稳定版本为 <strong>v3.8.0</strong>，面向所有用户<strong>完全免费</strong>开放下载，日常观影稳定可靠；而 <strong>v4.1.4 内测版</strong> 包含最新研发的双击全屏缩放、鼠标滚轮音量与悬浮 HUD、重构弹幕防遮挡与 1/16 极窄区域、IPTV 直播等前沿特性，<strong>需要捐赠支持本项目</strong>才可下载使用。感谢每一位捐赠者的支持，助力 AinanPlayer 持续迭代！
           </div>
         </div>
 
@@ -668,7 +674,7 @@
 
       <!-- Beta acquisition notice (shown when opened with 'beta') -->
       <div id="sponsorModalNotice" class="hidden mb-5 p-3.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-xs text-pink-700 dark:text-pink-300 leading-relaxed text-center">
-        💖 <strong data-i18n="modal_beta_notice_bold">v4.1.1 内测版获取指引</strong>：<span data-i18n="modal_beta_notice_desc">扫码捐赠支持（金额不限，随心赞助）后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！</span>
+        💖 <strong data-i18n="modal_beta_notice_bold">v4.1.4 内测版获取指引</strong>：<span data-i18n="modal_beta_notice_desc">扫码捐赠支持 目前赞助15及以上 后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！</span>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
@@ -716,6 +722,16 @@
         img: 'images/screenshot_detail.png',
         titleZh: 'AinanPlayer - 影视详情与选集',
         titleEn: 'AinanPlayer - Media Details & Episode Selection'
+      },
+      detail2: {
+        img: 'images/screenshot_detail_2.png',
+        titleZh: 'AinanPlayer - 演职员表与智能相似内容推荐',
+        titleEn: 'AinanPlayer - Cast, Crew & Smart Recommendations'
+      },
+      live: {
+        img: 'images/screenshot_live.png',
+        titleZh: 'AinanPlayer - IPTV 电视直播与央卫视节目流',
+        titleEn: 'AinanPlayer - IPTV Live TV Streaming & EPG'
       },
       player: {
         img: 'images/screenshot_player.png',
@@ -841,7 +857,7 @@
         nav_guide: '使用指南',
         nav_faq: '常见问题',
         btn_sponsor: '打赏支持',
-        hero_badge: 'v3.8.0 正式版稳定畅享 • v4.1.1 内测版抢先体验',
+        hero_badge: 'v3.8.0 正式版稳定畅享 • v4.1.4 内测版抢先体验',
         hero_title_1: '极速 · 原生 · 纯粹',
         hero_title_2: 'Windows 11 现代化 4K 影视聚合客户端',
         hero_desc: '基于微软原生 WinUI 3 与深度优化的 Yaozhi-MPV 高性能渲染引擎打造。零内置广告、毫秒级拖拽秒播，原生支持 TVBox/猫源多仓聚合订阅与网盘 4K 原画直解，还观影以纯净与流畅。',
@@ -857,6 +873,8 @@
         showcase_sub: '精心雕琢的 Windows 11 原生设计，顶部居中导航、紧凑工具栏与全景海报流，打造如丝般顺滑的大屏观影享受。',
         tab_home: '首页精选推荐',
         tab_detail: '影视详情与选集',
+        tab_detail2: '演职员与推荐',
+        tab_live: 'IPTV 电视直播',
         tab_player: '4K MPV 极速播放',
         tab_settings: '外观与个性化配置',
         hint_click_zoom: '点击图片查看高清大图',
@@ -877,7 +895,7 @@
         f6_desc: '首页大卡片与影视详情页海报全景通顶延伸至顶栏边界。配合半透明模糊毛玻璃悬浮导航胶囊，鼠标悬浮平滑过渡，带来开阔无遮挡的沉浸视界。',
         dl_badge: '下载中心',
         dl_heading: '获取 AinanPlayer 安装包与便携版',
-        dl_sub: '面向大众用户免费提供 <strong>正式稳定版 (v3.8.0)</strong>；<strong>最新内测版 (v4.1.1)</strong> 包含 IPTV 直播与沉浸视界等前沿特性，需要捐赠支持才可下载使用。',
+        dl_sub: '面向大众用户免费提供 <strong>正式稳定版 (v3.8.0)</strong>；<strong>最新内测版 (v4.1.4)</strong> 包含 IPTV 直播与沉浸视界等前沿特性，需要捐赠支持才可下载使用。',
         tag_sponsor_only: '捐赠专属',
         q1: 'Q: AinanPlayer 本身自带影视资源吗？',
         a1: '答：AinanPlayer 是一款纯粹的流媒体播放工具与开放协议解析客户端，本身<strong>不内置、不提供、也不存储任何音视频资源</strong>。用户需自行在「订阅管理」页面中添加您所拥有的 TVBox 或猫源规则地址，即可畅享全网聚合浏览与观影。',
@@ -886,12 +904,12 @@
         q3: 'Q: 内置 Yaozhi-MPV 与外置自定义 MPV 内核有什么区别？',
         a3: '答：软件已自带深度优化的便携版 Yaozhil/mpv-Yaozhi 引擎，绝大多数用户无需任何设置即可开箱享受 4K HDR、HEVC 与 60FPS 极速秒播；如果您是进阶发烧友，可在「设置」中指定外部 mpv.exe 路径，完整继承您的个性化 mpv.conf 参数、Anime4K 着色器与 Lua 插件。',
         q4: 'Q: 正式版与内测版有什么区别？如何获取内测版？',
-        a4: '答：目前官方正式稳定版本为 <strong>v3.8.0</strong>，面向所有用户<strong>完全免费</strong>开放下载，日常观影稳定可靠；而 <strong>v4.1.1 内测版</strong> 包含最新研发成果（双击全屏、滚轮音量调节、弹幕防重叠与极窄区域、全新 IPTV 电视直播与 EPG 节目预告、通顶全景海报等），<strong>需要捐赠支持本项目</strong>才可下载使用。感谢每一位捐赠者的支持，助力 AinanPlayer 持续迭代！',
+        a4: '答：目前官方正式稳定版本为 <strong>v3.8.0</strong>，面向所有用户<strong>完全免费</strong>开放下载，日常观影稳定可靠；而 <strong>v4.1.4 内测版</strong> 包含最新研发成果（双击全屏、滚轮音量调节、弹幕防重叠与极窄区域、全新 IPTV 电视直播与 EPG 节目预告、通顶全景海报等），<strong>需要捐赠支持本项目</strong>才可下载使用。感谢每一位捐赠者的支持，助力 AinanPlayer 持续迭代！',
         footer_disclaimer: '免责声明：本客户端仅作为开源视听协议渲染工具，不提供、不抓取、不存储任何音视频媒体。所有功能需配合用户合法自定义订阅源使用。',
         modal_sponsor_title: '支持 AinanPlayer 的持续开发',
         modal_sponsor_sub: '如果 AinanPlayer 提升了您的观影体验，欢迎请作者喝杯咖啡 ☕',
-        modal_beta_notice_bold: 'v4.1.1 内测版获取指引',
-        modal_beta_notice_desc: '扫码捐赠 15 元及以上支持本项目后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！'
+        modal_beta_notice_bold: 'v4.1.4 内测版获取指引',
+        modal_beta_notice_desc: '扫码捐赠支持 目前赞助15及以上 后，请保留赞赏凭据，前往交流群或联系作者即可立即获取内测版专属直链与优先更新！'
       },
       en: {
         nav_features: 'Features',
@@ -900,7 +918,7 @@
         nav_guide: 'User Guide',
         nav_faq: 'FAQ',
         btn_sponsor: 'Sponsor',
-        hero_badge: 'v3.8.0 Stable Released • v4.1.1 Beta Available',
+        hero_badge: 'v3.8.0 Stable Released • v4.1.4 Beta Available',
         hero_title_1: 'Fast · Native · Pure',
         hero_title_2: 'Modern Windows 11 4K Media Aggregator & Player',
         hero_desc: 'Crafted with native WinUI 3 and a customized Yaozhi-MPV hardware accelerated rendering core. Zero ads, instant playback, multi-source TVBox/CatVod subscription aggregation, and 4K cloud drive streaming.',
@@ -916,6 +934,8 @@
         showcase_sub: 'Carefully engineered Windows 11 Fluent Design with centered top navigation, compact toolbar, and poster wall flow for an immersive big-screen experience.',
         tab_home: 'Home Recommendations',
         tab_detail: 'Media Details & Episodes',
+        tab_detail2: 'Cast & Recommendations',
+        tab_live: 'IPTV Live TV',
         tab_player: '4K MPV Hardware Playback',
         tab_settings: 'Appearance & Settings',
         hint_click_zoom: 'Click screenshot for full resolution',
@@ -936,7 +956,7 @@
         f6_desc: 'Hero posters seamlessly extend to the window top boundary. Floating semi-transparent frosted glass capsule navigation ensures an expansive, distraction-free visual experience.',
         dl_badge: 'Downloads',
         dl_heading: 'Get AinanPlayer Setup & Portable',
-        dl_sub: 'The <strong>Official Stable (v3.8.0)</strong> is completely free for all users. The <strong>Latest Beta (v4.1.1)</strong> features IPTV live TV, immersive top bar, and cutting-edge updates, available upon donation support.',
+        dl_sub: 'The <strong>Official Stable (v3.8.0)</strong> is completely free for all users. The <strong>Latest Beta (v4.1.4)</strong> features IPTV live TV, immersive top bar, and cutting-edge updates, available upon donation support.',
         tag_sponsor_only: 'Sponsor Only',
         q1: 'Q: Does AinanPlayer provide built-in media content?',
         a1: 'Answer: AinanPlayer is purely a client rendering engine and open protocol player. It does <strong>NOT host, provide, or store any media content</strong>. Users can import their own TVBox or CatVod subscription URLs.',
@@ -945,11 +965,11 @@
         q3: 'Q: What is the difference between Built-in and External MPV engines?',
         a3: 'Answer: The app bundles an optimized portable Yaozhil/mpv-Yaozhi engine for instant 4K HDR playback. Enthusiasts can also point to their own external mpv.exe in Settings to use personal mpv.conf and Shaders.',
         q4: 'Q: What is the difference between Stable and Beta releases? How to get Beta?',
-        a4: 'Answer: The official stable release is <strong>v3.8.0</strong> and is <strong>completely free</strong> for everyone. The <strong>v4.1.1 Beta</strong> includes newly refined watch history deduplication & single deletion, IPTV live TV streaming & EPG schedule, immersive top bar, and is <strong>available to project donors and supporters</strong>. Your support keeps AinanPlayer moving forward!',
+        a4: 'Answer: The official stable release is <strong>v3.8.0</strong> and is <strong>completely free</strong> for everyone. The <strong>v4.1.4 Beta</strong> includes newly refined watch history deduplication & single deletion, IPTV live TV streaming & EPG schedule, immersive top bar, and is <strong>available to project donors and supporters</strong>. Your support keeps AinanPlayer moving forward!',
         footer_disclaimer: 'Disclaimer: This client is purely an open-source streaming protocol tool and does not provide or store audio/video media.',
         modal_sponsor_title: 'Support AinanPlayer Development',
         modal_sponsor_sub: 'If AinanPlayer has made your media experience better, buy the developer a coffee! ☕',
-        modal_beta_notice_bold: 'v4.1.1 Beta Access Instructions',
+        modal_beta_notice_bold: 'v4.1.4 Beta Access Instructions',
         modal_beta_notice_desc: 'After donating 15 RMB or more via WeChat or Alipay, keep your receipt screenshot and reach out in our Telegram Group to receive your exclusive Beta download link and priority updates!'
       }
     };
