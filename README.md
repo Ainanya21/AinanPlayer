@@ -13,7 +13,7 @@
 
 🌐 **[English](README.md)** | **[简体中文](README_zh.md)**
 
-🌍 [**Official Website**](https://ainanya21.github.io/AinanPlayer/) • [**Download**](#download--installation) • [**User Guide**](docs/USER_GUIDE.md) • [**Screenshots**](#interface-preview) • [**Features**](#key-features) • [**Requirements**](#system-requirements) • [**Cloud Authorization**](#cloud-drive-authorization) • [**Community**](#community--feedback) • [**Disclaimer**](#disclaimer) • [**Support**](#support-the-project) • [**Credits**](#credits--acknowledgments)
+🌍 [**Official Website**](https://ainanya21.github.io/AinanPlayer/) • [**Download**](#download--installation) • [**User Guide**](docs/USER_GUIDE.md) • [**Screenshots**](#interface-preview) • [**Features**](#key-features) • [**Requirements**](#system-requirements) • [**Cloud Authorization**](#cloud-drive-authorization) • [**Media Servers**](#media-server-configuration--integration) • [**Community**](#community--feedback) • [**Disclaimer**](#disclaimer) • [**Support**](#support-the-project) • [**Credits**](#credits--acknowledgments)
 
 </div>
 
@@ -60,6 +60,11 @@
 * **Native WinUI 3 & Fluent Design System**:
   * Built with Windows App SDK 1.6 and native Mica / Acrylic materials, supporting seamless real-time switching between Light, Dark, and System theme modes.
   * **Brand New App Icon & 4 Customizable Styles**: Features an all-new official default "Classic Blue" icon crafted with continuous superellipse curvature ($n=4.8$) and transparent alpha channels. Choose between **Classic Blue**, **Aurora Pink**, **Obsidian Dark**, and **Neon Cyber** in Settings with instant live switching across Windows Taskbar and Title Bar.
+* **Native Media Server Aggregation (Emby / Jellyfin / Plex)**:
+  * **Seamless Private & Public Integration**: Connect your self-hosted Emby, Jellyfin, and Plex media servers directly. Browse libraries, seasons/episodes, resume watching lists, and latest releases in a single unified interface.
+  * **Ultra-Fast Millisecond Concurrency Search**: Performs asynchronous parallel searches across self-hosted media servers and online crawler sources simultaneously. Private server results load in ~100ms with prioritized display.
+  * **Lossless Direct Streaming & Bidirectional Progress Sync**: Direct stream passthrough to the Yaozhi-MPV hardware acceleration engine, preserving 4K HDR, Dolby Vision, multi-audio tracks, and embedded/external subtitles. Watch progress and resume points are synced with your server in real-time.
+  * **Multi-Source Icon Subscriptions & Custom Skinning**: Bundles polished official brand icons and supports importing Quantumult X / Loon icon subscriptions. Features keyword icon search and visual icon selection for effortless server customization.
 * **Universal Multi-Engine Spider Architecture**:
   * Native compatibility with CatVod, TVBox protocol ecosystems, encrypted `.js.md5` and Base64 subscriptions.
   * Isolated multi-port microservice hosting, dynamic hot-loading, and intelligent crawler script caching.
@@ -110,6 +115,29 @@ To stream 4K original quality resources from cloud aggregators, authenticate you
 2. In the top source dropdown, select **"Config Center"** (配置中心) (or via "Settings" -> "Cloud Storage Authorization").
 3. Use the mobile app of your cloud drive (Quark / UC / Alibaba Cloud / Baidu Netdisk / 115) to scan the QR code.
 4. Once authorized, the backend will automatically handle automated transfer and high-speed direct stream parsing.
+
+---
+
+## Media Server Configuration & Integration
+
+AinanPlayer natively integrates **Emby**, **Jellyfin**, and **Plex** media servers, blending private collections seamlessly with multi-source online aggregation:
+
+### 1. Adding a Media Server
+1. Go to **"Settings" -> "Media Server Settings"** in the sidebar.
+2. Click **"Add Media Server"** and choose your server type (Emby / Jellyfin / Plex).
+3. Enter your server URL (LAN IP like `http://192.168.1.100:8096` or public domain), port, and credentials:
+   - **Emby / Jellyfin**: Authenticate using username and password, or directly provide an API Key.
+   - **Plex**: Enter server address and your `X-Plex-Token`.
+4. Click **"Test Connection"** to verify, then save. Media libraries and watching progress will sync automatically.
+
+### 2. Icon Subscriptions & Custom Skinning
+* **Official Brand Icons**: Preloaded high-definition official icons for Emby, Jellyfin, and Plex.
+* **Third-Party Icon Subscriptions**: Import popular icon rule subscriptions (Quantumult X / Loon format JSON) to unlock hundreds of community server icons.
+* **Search & Manual Selection**: Search icons by name or keyword with live previews, and switch icons with a single click.
+
+### 3. Direct Streaming & Concurrent Search
+* **Hardware-Accelerated Direct Stream**: Plays original media streams directly via Yaozhi-MPV with zero intermediate re-encoding loss, supporting 4K HDR, multiple audio tracks, and styled subtitles.
+* **Instant Concurrent Search**: Searches all active media servers and crawler sources concurrently, returning self-hosted results within ~100ms for a frictionless unified browsing experience.
 
 ---
 
