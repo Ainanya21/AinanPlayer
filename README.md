@@ -169,7 +169,7 @@ AinanPlayer hardware acceleration is fully powered by **[Yaozhil/mpv-Yaozhi](htt
 
 If **AinanPlayer** enhances your multimedia experience, donations to support ongoing development are greatly appreciated:
 
-| WeChat Pay (微信赞赏) | Alipay (支付宝收款) |
+| WeChat Pay (微信) | Alipay (支付宝) |
 | :---: | :---: |
 | <img src="docs/wechat_pay.jpg" width="220" alt="WeChat Pay QR" /> | <img src="docs/alipay.jpg" width="220" alt="Alipay QR" /> |
 
