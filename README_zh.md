@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### 现代化 Windows 11 影视聚合与 4K 超清硬件加速播放平台
 
-[![正式稳定版](https://img.shields.io/badge/正式稳定版-v4.4.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.4.0)
-[![前沿内测版](https://img.shields.io/badge/前沿内测版-v4.9.0-E0245E?style=flat-square&logo=speedtest)](https://ainanya21.github.io/AinanPlayer/)
+[![正式稳定版](https://img.shields.io/badge/正式稳定版-v4.5.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.5.0)
+[![前沿内测版](https://img.shields.io/badge/前沿内测版-v5.0.0-E0245E?style=flat-square&logo=speedtest)](https://ainanya21.github.io/AinanPlayer/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
 [![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/AinanPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
@@ -104,9 +104,9 @@
 
 | 文件类型 | 说明 | 适用场景 |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v4.4.0_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | **官方正式稳定版**，推荐大众用户日常观影使用 |
-| **`AinanPlayer_v4.4.0_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
-| **`AinanPlayer_v4.9.0 (Beta)`** | 最新内测预览版，集成全部前沿研发特性 | **捐赠专属内测体验版**，前往官网了解获取 |
+| **`AinanPlayer_v4.5.0_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | **官方正式稳定版**，推荐大众用户日常观影使用 |
+| **`AinanPlayer_v4.5.0_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
+| **`AinanPlayer_v5.0.0 (Beta)`** | 最新内测预览版，集成全部前沿研发特性 | **捐赠专属内测体验版**，前往官网了解获取 |
 
 ---
 

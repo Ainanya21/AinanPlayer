@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### Modern Windows 11 Media Aggregation & 4K Hardware-Accelerated Streaming Platform
 
-[![Stable Release](https://img.shields.io/badge/Release-v4.4.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.4.0)
-[![Beta Preview](https://img.shields.io/badge/Beta-v4.9.0-E0245E?style=flat-square&logo=speedtest)](https://ainanya21.github.io/AinanPlayer/)
+[![Stable Release](https://img.shields.io/badge/Release-v4.5.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.5.0)
+[![Beta Preview](https://img.shields.io/badge/Beta-v5.0.0-E0245E?style=flat-square&logo=speedtest)](https://ainanya21.github.io/AinanPlayer/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
 [![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/AinanPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
@@ -104,9 +104,9 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v4.4.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
-| **`AinanPlayer_v4.4.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
-| **`AinanPlayer_v4.9.0 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Insider Beta (内测体验版)**; available via official website |
+| **`AinanPlayer_v4.5.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
+| **`AinanPlayer_v4.5.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
+| **`AinanPlayer_v5.0.0 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Insider Beta (内测体验版)**; available via official website |
 
 ---
 
