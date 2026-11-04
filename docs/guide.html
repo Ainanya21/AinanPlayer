@@ -29,17 +29,10 @@
     }
   </script>
 
-  <!-- GSAP 3 & Plugins (Local + CDN fallback) -->
+  <!-- GSAP 3 & Plugins -->
   <script src="js/gsap.min.js"></script>
   <script src="js/ScrollTrigger.min.js"></script>
   <script src="js/ScrollToPlugin.min.js"></script>
-  <script>
-    if (typeof gsap === 'undefined') {
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"><\/script>');
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"><\/script>');
-    }
-  </script>
 
   <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -721,7 +714,7 @@
     }
 
     // ================= GSAP GUIDE INTERACTION =================
-    document.addEventListener('DOMContentLoaded', () => {
+    function initGuideAnimations() {
       if (typeof gsap === 'undefined') return;
 
       // Smooth scroll for all anchor links
@@ -791,18 +784,41 @@
         });
       });
 
-      // Entrance animation for sections
-      gsap.from('main section[id^="sec-"]', {
-        scrollTrigger: {
-          trigger: 'main',
-          start: 'top 80%'
-        },
-        y: 30,
-        autoAlpha: 0,
-        stagger: 0.08,
-        duration: 0.6,
-        ease: 'power2.out'
+      // Entrance animation for sections via ScrollTrigger.batch (Only triggers upon viewport entry)
+      ScrollTrigger.batch('main section[id^="sec-"]', {
+        start: 'top 90%',
+        once: true,
+        onEnter: (batch) => {
+          gsap.fromTo(batch,
+            { autoAlpha: 0, y: 25 },
+            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.06, ease: 'power2.out', clearProps: 'opacity,visibility,transform' }
+          );
+        }
       });
-    });
+
+      // Refresh on full load
+      window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      });
+
+      // Self-Healing Fail-Safe
+      setTimeout(() => {
+        if (typeof gsap !== 'undefined') {
+          gsap.set('main section[id^="sec-"]', {
+            autoAlpha: 1,
+            clearProps: 'opacity,visibility'
+          });
+        }
+      }, 1000);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGuideAnimations);
+    } else {
+      initGuideAnimations();
+    }
+  </script>
 </body>
 </html>

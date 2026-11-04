@@ -46,17 +46,10 @@
     }
   </script>
 
-  <!-- GSAP 3 & Plugins (Local + CDN fallback) -->
+  <!-- GSAP 3 & Plugins -->
   <script src="js/gsap.min.js"></script>
   <script src="js/ScrollTrigger.min.js"></script>
   <script src="js/ScrollToPlugin.min.js"></script>
-  <script>
-    if (typeof gsap === 'undefined') {
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"><\/script>');
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"><\/script>');
-    }
-  </script>
 
   <style>
     /* Custom Scrollbar */
@@ -1176,7 +1169,7 @@
     });
 
     // ================= GSAP MOTION ORCHESTRATION =================
-    document.addEventListener('DOMContentLoaded', () => {
+    function initAnimations() {
       if (typeof gsap === 'undefined') return;
 
       // Smooth Anchor Links with ScrollToPlugin
@@ -1229,14 +1222,19 @@
           }
         });
 
-        // 3. Hero Cinematic Entrance Timeline
-        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        heroTl.from('#mainHeader', { y: -25, autoAlpha: 0, duration: 0.8 })
-              .from('#heroBadge', { y: -20, scale: 0.88, autoAlpha: 0, duration: 0.6, ease: "back.out(1.8)" }, "-=0.4")
-              .from('#heroTitle', { y: 35, autoAlpha: 0, duration: 0.85, ease: "power4.out" }, "-=0.3")
-              .from('#heroDesc', { y: 20, autoAlpha: 0, duration: 0.7 }, "-=0.5")
-              .from('#heroCtas a', { y: 20, scale: 0.94, autoAlpha: 0, duration: 0.55, stagger: 0.12, ease: "back.out(1.5)" }, "-=0.4")
-              .from('#heroMeta > *', { y: 15, autoAlpha: 0, duration: 0.5, stagger: 0.08 }, "-=0.3");
+        // 3. Hero Entrance Timeline (Fast, fluid, self-clearing)
+        const heroTl = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          onComplete: () => {
+            gsap.set(['#mainHeader', '#heroBadge', '#heroTitle', '#heroDesc', '#heroCtas', '#heroCtas a', '#heroMeta', '#heroMeta > *'], { clearProps: 'opacity,visibility,transform' });
+          }
+        });
+        heroTl.fromTo('#mainHeader', { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45 })
+              .fromTo('#heroBadge', { y: -15, scale: 0.9, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.8)" }, "-=0.25")
+              .fromTo('#heroTitle', { y: 25, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.55, ease: "power3.out" }, "-=0.25")
+              .fromTo('#heroDesc', { y: 15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45 }, "-=0.35")
+              .fromTo('#heroCtas a', { y: 15, scale: 0.95, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.4, stagger: 0.08, ease: "back.out(1.5)" }, "-=0.25")
+              .fromTo('#heroMeta > *', { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, stagger: 0.05 }, "-=0.2");
 
         // 4. Aurora Ambient Spheres Gentle Floating
         gsap.to('#auroraOrb1', {
@@ -1279,17 +1277,17 @@
           }
         }
 
-        // 6. Showcase Section Scroll Reveal & 3D Tilt
-        gsap.from('#showcaseCard', {
-          scrollTrigger: {
-            trigger: '#showcase',
-            start: 'top 80%'
-          },
-          y: 70,
-          rotationX: 8,
-          autoAlpha: 0,
-          duration: 1,
-          ease: 'power3.out'
+        // 6. Showcase Section Scroll Reveal (ScrollTrigger.create onEnter prevents pre-hiding)
+        ScrollTrigger.create({
+          trigger: '#showcase',
+          start: 'top 85%',
+          once: true,
+          onEnter: () => {
+            gsap.fromTo('#showcaseCard',
+              { autoAlpha: 0, y: 50, rotationX: 6 },
+              { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.75, ease: 'power3.out', clearProps: 'opacity,visibility,transform' }
+            );
+          }
         });
 
         const showcaseCard = document.getElementById('showcaseCard');
@@ -1309,17 +1307,16 @@
           });
         }
 
-        // 7. Core Features Scroll Reveal & Hover 3D Tilt
-        gsap.from('.feature-card', {
-          scrollTrigger: {
-            trigger: '#features',
-            start: 'top 75%'
-          },
-          y: 45,
-          autoAlpha: 0,
-          stagger: 0.1,
-          duration: 0.75,
-          ease: 'power3.out'
+        // 7. Core Features Scroll Reveal via ScrollTrigger.batch (Only animates upon entry)
+        ScrollTrigger.batch('.feature-card', {
+          start: 'top 88%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.fromTo(batch,
+              { autoAlpha: 0, y: 35 },
+              { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.08, ease: 'power2.out', clearProps: 'opacity,visibility,transform' }
+            );
+          }
         });
 
         document.querySelectorAll('.feature-card').forEach(card => {
@@ -1348,37 +1345,89 @@
         });
 
         // 8. Download Section Reveal
-        gsap.from('#download .ver-btn, #ver-content-stable > div', {
-          scrollTrigger: {
-            trigger: '#download',
-            start: 'top 75%'
-          },
-          y: 35,
-          autoAlpha: 0,
-          stagger: 0.1,
-          duration: 0.7,
-          ease: 'power3.out'
+        ScrollTrigger.create({
+          trigger: '#download',
+          start: 'top 85%',
+          once: true,
+          onEnter: () => {
+            gsap.fromTo('#download .ver-btn, #ver-content-stable, #ver-content-beta',
+              { autoAlpha: 0, y: 30 },
+              { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power2.out', clearProps: 'opacity,visibility,transform' }
+            );
+          }
         });
 
-        // 9. FAQ Items Reveal
-        gsap.from('.faq-item', {
-          scrollTrigger: {
-            trigger: '#faq',
-            start: 'top 80%'
-          },
-          y: 25,
-          autoAlpha: 0,
-          stagger: 0.1,
-          duration: 0.6,
-          ease: 'power2.out'
+        // 9. FAQ Items Reveal via ScrollTrigger.batch
+        ScrollTrigger.batch('.faq-item', {
+          start: 'top 90%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.fromTo(batch,
+              { autoAlpha: 0, y: 20 },
+              { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out', clearProps: 'opacity,visibility,transform' }
+            );
+          }
         });
       });
 
-      // Reduced motion fallback: simple reveals
+      // Reduced motion fallback: instantly reveal everything
       mm.add("(prefers-reduced-motion: reduce)", () => {
-        gsap.set(['#heroBadge', '#heroTitle', '#heroDesc', '#heroCtas', '#heroMeta', '#showcaseCard', '.feature-card', '.faq-item'], { autoAlpha: 1 });
+        gsap.set(['#heroBadge', '#heroTitle', '#heroDesc', '#heroCtas', '#heroMeta', '#showcaseCard', '.feature-card', '.faq-item', '#download', '#ver-content-stable', '#ver-content-beta'], {
+          autoAlpha: 1,
+          clearProps: 'opacity,visibility,transform'
+        });
       });
-    });
+
+      // Recalculate triggers after full page and preview images load
+      window.addEventListener('load', () => {
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.refresh();
+        }
+      });
+      const previewImg = document.getElementById('previewImage');
+      if (previewImg) {
+        if (previewImg.complete) {
+          ScrollTrigger.refresh();
+        } else {
+          previewImg.addEventListener('load', () => ScrollTrigger.refresh());
+        }
+      }
+
+      // Self-Healing Fail-Safe: guarantees 100% visibility for all elements regardless of network or scroll state
+      setTimeout(() => {
+        if (typeof gsap !== 'undefined') {
+          gsap.set([
+            '#mainHeader',
+            '#heroBadge',
+            '#heroTitle',
+            '#heroDesc',
+            '#heroCtas',
+            '#heroCtas a',
+            '#heroMeta',
+            '#heroMeta > *',
+            '#showcaseCard',
+            '.feature-card',
+            '#download',
+            '#ver-tab-stable',
+            '#ver-tab-beta',
+            '#ver-content-stable',
+            '#ver-content-beta',
+            '#ver-content-stable > div',
+            '#ver-content-beta > div',
+            '.faq-item'
+          ], {
+            autoAlpha: 1,
+            clearProps: 'opacity,visibility'
+          });
+        }
+      }, 1200);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAnimations);
+    } else {
+      initAnimations();
+    }
   </script>
 </body>
 </html>
