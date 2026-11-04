@@ -29,6 +29,18 @@
     }
   </script>
 
+  <!-- GSAP 3 & Plugins (Local + CDN fallback) -->
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/ScrollToPlugin.min.js"></script>
+  <script>
+    if (typeof gsap === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"><\/script>');
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"><\/script>');
+    }
+  </script>
+
   <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,6 +71,36 @@
     html.dark .glass-nav {
       background: rgba(11, 15, 25, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-nav-elevated {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(45, 124, 247, 0.15);
+    }
+    html.dark .glass-nav-elevated {
+      background: rgba(11, 15, 25, 0.94);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Active TOC link highlight */
+    .toc-link.active {
+      color: #2563eb !important;
+      background-color: rgba(37, 99, 235, 0.08) !important;
+      font-weight: 600 !important;
+      border-left: 3px solid #2563eb !important;
+      padding-left: 0.6rem !important;
+    }
+    html.dark .toc-link.active {
+      color: #60a5fa !important;
+      background-color: rgba(96, 165, 250, 0.12) !important;
+      border-left-color: #60a5fa !important;
+    }
+
+    .guide-section {
+      will-change: transform, opacity;
     }
   </style>
 </head>
@@ -140,20 +182,20 @@
           <div class="font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-3 px-2 text-xs">
             目录导航
           </div>
-          <nav class="space-y-1">
-            <a href="#sec-1" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">1. 软件简介与核心特色</a>
-            <a href="#sec-2" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">2. 下载与安装覆盖说明</a>
-            <a href="#sec-3" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">3. 首次启动与使用声明</a>
-            <a href="#sec-4" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">4. 订阅源管理与添加</a>
-            <a href="#sec-5" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">5. 首页推荐与全量分类</a>
-            <a href="#sec-6" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">6. 影视详情与智能选集</a>
-            <a href="#sec-7" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">7. 电视直播 (IPTV) 模块</a>
-            <a href="#sec-8" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">8. 双 MPV 播放引擎配置</a>
-            <a href="#sec-9" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">9. 配置中心与网盘授权</a>
-            <a href="#sec-10" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">10. 聚合搜索与历史/收藏</a>
-            <a href="#sec-11" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">11. 外观与图标个性化定制</a>
-            <a href="#sec-12" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">12. 应用内一键在线更新</a>
-            <a href="#sec-13" class="block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">13. 常见问题解答 (FAQ)</a>
+          <nav id="tocNav" class="space-y-1">
+            <a href="#sec-1" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">1. 软件简介与核心特色</a>
+            <a href="#sec-2" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">2. 下载与安装覆盖说明</a>
+            <a href="#sec-3" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">3. 首次启动与使用声明</a>
+            <a href="#sec-4" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">4. 订阅源管理与添加</a>
+            <a href="#sec-5" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">5. 首页推荐与全量分类</a>
+            <a href="#sec-6" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">6. 影视详情与智能选集</a>
+            <a href="#sec-7" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">7. 电视直播 (IPTV) 模块</a>
+            <a href="#sec-8" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">8. 双 MPV 播放引擎配置</a>
+            <a href="#sec-9" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">9. 配置中心与网盘授权</a>
+            <a href="#sec-10" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">10. 聚合搜索与历史/收藏</a>
+            <a href="#sec-11" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">11. 外观与图标个性化定制</a>
+            <a href="#sec-12" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">12. 应用内一键在线更新</a>
+            <a href="#sec-13" class="toc-link block px-2.5 py-1.5 rounded-lg text-slate-600 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-brand-600 dark:hover:text-brand-400 transition">13. 常见问题解答 (FAQ)</a>
           </nav>
 
           <div class="pt-3 border-t border-slate-200 dark:border-gray-800 mt-4 px-2">
@@ -557,9 +599,14 @@
     </div>
   </footer>
 
+  <!-- ================= FLOATING BACK TO TOP ================= -->
+  <button id="backToTop" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-40 p-3 rounded-full glass-card hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-white/10 shadow-xl opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 active:scale-95 group" title="回到顶部">
+    <svg class="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  </button>
+
   <!-- ================= SPONSOR MODAL ================= -->
   <div id="sponsorModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-in fade-in zoom-in duration-200 text-slate-800 dark:text-white">
+    <div id="sponsorModalCard" class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative text-slate-800 dark:text-white">
       
       <button onclick="closeSponsorModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:text-gray-400 dark:hover:text-white transition">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -576,35 +623,31 @@
       <div class="grid grid-cols-2 gap-4">
         <!-- WeChat Pay -->
         <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
-          <div class="font-semibold text-xs text-emerald-600 dark:text-emerald-400 mb-2 flex items-center justify-center gap-1">
-            <span>微信支付</span>
-          </div>
-          <div class="bg-white p-2 rounded-lg inline-block border border-slate-200 dark:border-gray-700 shadow-sm">
-            <img src="images/sponsor-wx.png" alt="微信赞助二维码" class="w-36 h-36 object-contain rounded">
-          </div>
+          <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">微信支付 (WeChat)</div>
+          <img src="wechat_pay.jpg" alt="微信赞赏码" class="w-full rounded-lg aspect-square object-cover shadow-sm">
         </div>
-
         <!-- Alipay -->
         <div class="bg-slate-50 dark:bg-gray-800/60 p-4 rounded-xl text-center border border-slate-200 dark:border-gray-700/50">
-          <div class="font-semibold text-xs text-blue-600 dark:text-blue-400 mb-2 flex items-center justify-center gap-1">
-            <span>支付宝</span>
-          </div>
-          <div class="bg-white p-2 rounded-lg inline-block border border-slate-200 dark:border-gray-700 shadow-sm">
-            <img src="images/sponsor-ali.png" alt="支付宝赞助二维码" class="w-36 h-36 object-contain rounded">
-          </div>
+          <div class="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-2">支付宝 (Alipay)</div>
+          <img src="alipay.jpg" alt="支付宝赞赏码" class="w-full rounded-lg aspect-square object-cover shadow-sm">
         </div>
       </div>
 
       <div class="mt-6 text-center">
-        <p class="text-xs text-slate-500 dark:text-gray-400">
-          您的每一份赞赏与支持，都是持续维护优化 AinanPlayer 的无限动力，由衷感谢！
-        </p>
+        <button onclick="closeSponsorModal()" class="px-6 py-2 text-xs font-semibold text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white rounded-lg bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 transition">
+          关闭
+        </button>
       </div>
 
     </div>
   </div>
 
   <script>
+    // Register GSAP plugins
+    if (typeof gsap !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    }
+
     // Theme Switcher
     const htmlEl = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
@@ -629,17 +672,31 @@
       }
     });
 
-    // Sponsor Modal
+    // Sponsor Modal with Physics Spring
     function openSponsorModal() {
       const modal = document.getElementById('sponsorModal');
+      const card = document.getElementById('sponsorModalCard');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(modal, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25 });
+        gsap.fromTo(card, { scale: 0.88, y: 25, autoAlpha: 0 }, { scale: 1, y: 0, autoAlpha: 1, duration: 0.4, ease: 'back.out(1.6)' });
+      }
     }
 
     function closeSponsorModal() {
       const modal = document.getElementById('sponsorModal');
-      modal.classList.remove('flex');
-      modal.classList.add('hidden');
+      const card = document.getElementById('sponsorModalCard');
+      if (typeof gsap !== 'undefined') {
+        gsap.to(card, { scale: 0.9, y: 15, autoAlpha: 0, duration: 0.2, ease: 'power2.in' });
+        gsap.to(modal, { autoAlpha: 0, duration: 0.2, onComplete: () => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }});
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
     }
 
     document.getElementById('sponsorModal').addEventListener('click', (e) => {
@@ -653,6 +710,99 @@
         closeSponsorModal();
       }
     });
-  </script>
+
+    // Scroll to Top Helper
+    function scrollToTop() {
+      if (typeof gsap !== 'undefined' && gsap.plugins.scrollTo) {
+        gsap.to(window, { duration: 0.8, scrollTo: 0, ease: 'power3.inOut' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // ================= GSAP GUIDE INTERACTION =================
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof gsap === 'undefined') return;
+
+      // Smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            gsap.to(window, {
+              duration: 0.7,
+              scrollTo: { y: targetEl, offsetY: 80 },
+              ease: "power3.inOut"
+            });
+          }
+        });
+      });
+
+      // Back to Top button scroll trigger
+      ScrollTrigger.create({
+        start: "top -350",
+        onUpdate: (self) => {
+          const btn = document.getElementById('backToTop');
+          if (self.scroll() > 350) {
+            gsap.to(btn, { autoAlpha: 1, y: 0, pointerEvents: 'auto', duration: 0.3, ease: "power2.out" });
+          } else {
+            gsap.to(btn, { autoAlpha: 0, y: 15, pointerEvents: 'none', duration: 0.25, ease: "power2.in" });
+          }
+        }
+      });
+
+      // Header elevation on scroll
+      ScrollTrigger.create({
+        start: "top -30",
+        onUpdate: (self) => {
+          const header = document.querySelector('header');
+          if (self.scroll() > 30) {
+            header.classList.add('glass-nav-elevated');
+          } else {
+            header.classList.remove('glass-nav-elevated');
+          }
+        }
+      });
+
+      // Left Sidebar TOC Scroll-Spy via ScrollTrigger
+      const sections = document.querySelectorAll('main section[id^="sec-"]');
+      const tocLinks = document.querySelectorAll('#tocNav .toc-link');
+
+      sections.forEach(section => {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 120px",
+          end: "bottom 120px",
+          onToggle: (self) => {
+            if (self.isActive) {
+              const id = section.getAttribute('id');
+              tocLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + id) {
+                  link.classList.add('active');
+                } else {
+                  link.classList.remove('active');
+                }
+              });
+            }
+          }
+        });
+      });
+
+      // Entrance animation for sections
+      gsap.from('main section[id^="sec-"]', {
+        scrollTrigger: {
+          trigger: 'main',
+          start: 'top 80%'
+        },
+        y: 30,
+        autoAlpha: 0,
+        stagger: 0.08,
+        duration: 0.6,
+        ease: 'power2.out'
+      });
+    });
 </body>
 </html>
