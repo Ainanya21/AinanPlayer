@@ -109,8 +109,8 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 | **`AinanPlayer_v4.7.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
 | **`AinanPlayer_v4.7.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
 | **`AinanPlayer_v5.2.1 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Windows Insider Beta (Windows 内测体验版)**; available via official website |
-| **`AinanPlayer_iOS_v2.5.0 (Beta)`** | iOS TestFlight / IPA preview release | **iOS Insider Beta (iOS 内测体验版)**; available via official website |
-| **`AinanPlayer_Android_v2.5.0 (Beta)`** | Android APK mobile and TV preview package | **Android Insider Beta (Android 内测体验版)**; available via official website |
+| **`AinanPlayer_iOS_v2.5.0 (Beta)`** | iOS IPA package (no TestFlight link, requires self-signing via TrollStore / AltStore / certificates) | **iOS Insider Beta (iOS 内测版)**; available via official website |
+| **`AinanPlayer_Android_v2.5.0 (Beta)`** | Android APK phone & tablet package (no TV build currently; deeply adapted for Pad UI) | **Android Insider Beta (Android 内测版)**; available via official website |
 
 ---
 
