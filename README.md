@@ -4,7 +4,9 @@
 ### Modern Windows 11 Media Aggregation & 4K Hardware-Accelerated Streaming Platform
 
 [![Stable Release](https://img.shields.io/badge/Release-v4.7.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.7.0)
-[![Beta Preview](https://img.shields.io/badge/Beta-v5.2.1-E0245E?style=flat-square&logo=speedtest)](https://ainanya21.github.io/AinanPlayer/)
+[![Windows Beta](https://img.shields.io/badge/Windows_Beta-v5.2.1-E0245E?style=flat-square&logo=windows)](https://ainanya21.github.io/AinanPlayer/)
+[![iOS Beta](https://img.shields.io/badge/iOS_Beta-v2.5.0-black?style=flat-square&logo=apple)](https://ainanya21.github.io/AinanPlayer/)
+[![Android Beta](https://img.shields.io/badge/Android_Beta-v2.5.0-3DDC84?style=flat-square&logo=android&logoColor=white)](https://ainanya21.github.io/AinanPlayer/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
 [![Framework](https://img.shields.io/badge/UI-WinUI%203%20%2F%20Windows%20App%20SDK%201.6-8860D0?style=flat-square&logo=microsoft)](https://github.com/Ainanya21/AinanPlayer)
 [![.NET](https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
@@ -106,7 +108,9 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 | :--- | :--- | :--- |
 | **`AinanPlayer_v4.7.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
 | **`AinanPlayer_v4.7.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
-| **`AinanPlayer_v5.2.1 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Insider Beta (内测体验版)**; available via official website |
+| **`AinanPlayer_v5.2.1 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Windows Insider Beta (Windows 内测体验版)**; available via official website |
+| **`AinanPlayer_iOS_v2.5.0 (Beta)`** | iOS TestFlight / IPA preview release | **iOS Insider Beta (iOS 内测体验版)**; available via official website |
+| **`AinanPlayer_Android_v2.5.0 (Beta)`** | Android APK mobile and TV preview package | **Android Insider Beta (Android 内测体验版)**; available via official website |
 
 ---
 
