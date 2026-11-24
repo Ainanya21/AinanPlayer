@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### 现代化 Windows 11 影视聚合与 4K 超清硬件加速播放平台
 
-[![正式稳定版](https://img.shields.io/badge/正式稳定版-v4.7.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.7.0)
-[![Windows 内测版](https://img.shields.io/badge/Windows_内测版-v5.2.1-E0245E?style=flat-square&logo=windows)](https://ainanya21.github.io/AinanPlayer/)
+[![正式稳定版](https://img.shields.io/badge/正式稳定版-v4.8.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.8.0)
+[![Windows 内测版](https://img.shields.io/badge/Windows_内测版-v5.4.0-E0245E?style=flat-square&logo=windows)](https://ainanya21.github.io/AinanPlayer/)
 [![iOS 内测版](https://img.shields.io/badge/iOS_内测版-v2.5.0-black?style=flat-square&logo=apple)](https://ainanya21.github.io/AinanPlayer/)
 [![Android 内测版](https://img.shields.io/badge/Android_内测版-v2.5.0-3DDC84?style=flat-square&logo=android&logoColor=white)](https://ainanya21.github.io/AinanPlayer/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
@@ -106,9 +106,9 @@
 
 | 文件类型 | 说明 | 适用场景 |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v4.7.0_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | **官方正式稳定版**，推荐大众用户日常观影使用 |
-| **`AinanPlayer_v4.7.0_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
-| **`AinanPlayer_v5.2.1 (Beta)`** | 最新 Windows 内测预览版，集成全部前沿研发特性 | **Windows 捐赠专属内测版**，前往官网了解获取 |
+| **`AinanPlayer_v4.8.0_Setup.exe`** | 现代图形化安装向导，支持自定义路径、桌面快捷方式 | **官方正式稳定版**，推荐大众用户日常观影使用 |
+| **`AinanPlayer_v4.8.0_Portable.zip`** | 绿色免安装解压即用版 | 适合便携 U 盘或快速体验 |
+| **`AinanPlayer_v5.4.0 (Beta)`** | 最新 Windows 内测预览版，集成全部前沿研发特性 | **Windows 捐赠专属内测版**，前往官网了解获取 |
 | **`AinanPlayer_iOS_v2.5.0 (Beta)`** | iOS IPA 安装包（无 TF 链接，提供 IPA 文件需自行签名安装，如巨魔/证书/AltStore） | **iOS 捐赠专属内测版**，前往官网了解获取 |
 | **`AinanPlayer_Android_v2.5.0 (Beta)`** | Android APK 手机与平板安装包（暂无 TV 电视版，已深度适配 Pad UI） | **Android 捐赠专属内测版**，前往官网了解获取 |
 

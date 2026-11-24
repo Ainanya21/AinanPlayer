@@ -3,8 +3,8 @@
 # <img src="docs/images/logo.png" width="38" height="38" align="absmiddle" alt="Logo" /> AinanPlayer
 ### Modern Windows 11 Media Aggregation & 4K Hardware-Accelerated Streaming Platform
 
-[![Stable Release](https://img.shields.io/badge/Release-v4.7.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.7.0)
-[![Windows Beta](https://img.shields.io/badge/Windows_Beta-v5.2.1-E0245E?style=flat-square&logo=windows)](https://ainanya21.github.io/AinanPlayer/)
+[![Stable Release](https://img.shields.io/badge/Release-v4.8.0-0078D6?style=flat-square&logo=github)](https://github.com/Ainanya21/AinanPlayer/releases/tag/v4.8.0)
+[![Windows Beta](https://img.shields.io/badge/Windows_Beta-v5.4.0-E0245E?style=flat-square&logo=windows)](https://ainanya21.github.io/AinanPlayer/)
 [![iOS Beta](https://img.shields.io/badge/iOS_Beta-v2.5.0-black?style=flat-square&logo=apple)](https://ainanya21.github.io/AinanPlayer/)
 [![Android Beta](https://img.shields.io/badge/Android_Beta-v2.5.0-3DDC84?style=flat-square&logo=android&logoColor=white)](https://ainanya21.github.io/AinanPlayer/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://github.com/Ainanya21/AinanPlayer)
@@ -106,9 +106,9 @@ Visit the [**Releases Page**](https://github.com/Ainanya21/AinanPlayer/releases)
 
 | Package Type | Description | Recommended Usage |
 | :--- | :--- | :--- |
-| **`AinanPlayer_v4.7.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
-| **`AinanPlayer_v4.7.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
-| **`AinanPlayer_v5.2.1 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Windows Insider Beta (Windows 内测体验版)**; available via official website |
+| **`AinanPlayer_v4.8.0_Setup.exe`** | Modern graphical setup wizard with custom install path and desktop shortcut | **Official Stable Release (正式稳定版)**; recommended for all users |
+| **`AinanPlayer_v4.8.0_Portable.zip`** | Portable standalone green archive | Extract and run directly; ideal for USB drives |
+| **`AinanPlayer_v5.4.0 (Beta)`** | Latest cutting-edge insider preview with all preview features | **Windows Insider Beta (Windows 内测体验版)**; available via official website |
 | **`AinanPlayer_iOS_v2.5.0 (Beta)`** | iOS IPA package (no TestFlight link, requires self-signing via TrollStore / AltStore / certificates) | **iOS Insider Beta (iOS 内测版)**; available via official website |
 | **`AinanPlayer_Android_v2.5.0 (Beta)`** | Android APK phone & tablet package (no TV build currently; deeply adapted for Pad UI) | **Android Insider Beta (Android 内测版)**; available via official website |
 
